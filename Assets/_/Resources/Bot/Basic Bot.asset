@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373149e1830792744960b5c08ef8e097, type: 3}
+  m_Name: Basic Bot
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.BotBlueprintScriptableObject
+  _id: BOT_BASIC
+  _botName: Default Bot
+  _productionTime: 60
+  _techTier: 1
+  _baseDamage: 1
+  _baseAttackSpeed: 5
+  _baseCritChance: 0
+  _costResourceA: {fileID: 11400000, guid: dab1a05aaa8e5df4884eacabbd7c435b, type: 2}
+  _baseCostA: 100
+  _costResourceB: {fileID: 11400000, guid: 74d72d7f318c0b14ca34252154f1fe2f, type: 2}
+  _baseCostB: 10
+  _costMultiplier: 1.15

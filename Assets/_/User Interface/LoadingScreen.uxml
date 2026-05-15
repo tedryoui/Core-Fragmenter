@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/LoadingScreen.uss?fileID=7433441132597879392&amp;guid=a7c4e8912b3d4f6e9a1c8d5e0f2b7a34&amp;type=3#LoadingScreen"/>
+    <ui:VisualElement name="Container" class="loading-screen">
+        <ui:VisualElement class="loading-screen__safe-area">
+            <ui:VisualElement class="loading-screen__header">
+                <ui:Label text="CORE FRAGMENTER" class="loading-screen__title"/>
+                <ui:Label text="Initializing systems…" class="loading-screen__subtitle"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="loading-screen__center">
+                <ui:VisualElement class="loading-screen__spinner loading-screen__spinner--active"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="loading-screen__footer">
+                <ui:VisualElement class="loading-screen__progress-track">
+                    <ui:VisualElement name="progress-fill" class="loading-screen__progress-fill"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="loading-screen__status-row">
+                    <ui:Label name="status-label" text="Loading…" class="loading-screen__status"/>
+                    <ui:Label name="percent-label" text="0%" class="loading-screen__percent"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

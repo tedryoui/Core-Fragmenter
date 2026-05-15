@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778831104250</updated>
       <workItem from="1778831105606" duration="15580000" />
-      <workItem from="1778853542211" duration="602000" />
+      <workItem from="1778853542211" duration="1751000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -131,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778853054032</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Idea changes">
+      <option name="closed" value="true" />
+      <created>1778854193724</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778854193724</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +168,8 @@
     <MESSAGE value="New packages &#10;+ PrimeTween&#10;+ UniTask&#10;+ InAppPurchasing&#10;+ Cinemachine&#10;New changes&#10;+ User Interface logic&#10;+ Loading Screen UI&#10;+ Loading Screen View Model" />
     <MESSAGE value="Removed URP Unity Tutorial" />
     <MESSAGE value="New packages&#10;+ PrimeTween&#10;+ UniTask&#10;+ InAppPurchasing&#10;+ Cinemachine&#10;New changes&#10;+ User Interface logic&#10;+ Loading Screen UI&#10;+ Loading Screen View Model" />
-    <option name="LAST_COMMIT_MESSAGE" value="New packages&#10;+ PrimeTween&#10;+ UniTask&#10;+ InAppPurchasing&#10;+ Cinemachine&#10;New changes&#10;+ User Interface logic&#10;+ Loading Screen UI&#10;+ Loading Screen View Model" />
+    <MESSAGE value="Idea changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idea changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
