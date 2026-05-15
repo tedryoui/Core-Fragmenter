@@ -1,0 +1,113 @@
+.loading-screen {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    justify-content: stretch;
+    background-color: rgb(35, 31, 32);
+}
+
+.loading-screen__safe-area {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    padding-top: 56px;
+    padding-bottom: 40px;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.loading-screen__header {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-screen__title {
+    font-size: 34px;
+    -unity-font-style: bold;
+    color: rgb(245, 245, 247);
+    letter-spacing: 3px;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.loading-screen__subtitle {
+    font-size: 15px;
+    color: rgb(160, 156, 158);
+    -unity-text-align: middle-center;
+}
+
+.loading-screen__center {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 28px;
+}
+
+.loading-screen__spinner {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    border-width: 3px;
+    border-color: rgb(70, 66, 68);
+    border-top-color: rgb(90, 200, 250);
+    border-right-color: rgb(90, 200, 250);
+    rotate: 0;
+    opacity: 1;
+}
+
+.loading-screen__spinner--active {
+    animation-name: loading-screen-spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 1;
+}
+
+.loading-screen__footer {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.loading-screen__progress-track {
+    height: 6px;
+    border-radius: 3px;
+    background-color: rgb(55, 50, 52);
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.loading-screen__progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    background-color: rgb(90, 200, 250);
+    transition-property: width;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.loading-screen__status-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loading-screen__status {
+    font-size: 14px;
+    color: rgb(180, 176, 178);
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+}
+
+.loading-screen__percent {
+    font-size: 14px;
+    color: rgb(90, 200, 250);
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    min-width: 42px;
+}

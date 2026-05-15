@@ -1,0 +1,10 @@
+OVDF v1.1
+_.Scripts.Scriptable_Objects.Global.ProjectSettingsScriptableObject, Assembly-CSharp
+MetaGuid:b0d3083af7d245fca1de377b6849610a
+
+# _loadingSceneBuildIndex
++ [Sirenix.OdinInspector.ValueDropdownAttribute]
+	ValuesGetter = "FriendlySceneBuildIndexList"
+	IsUniqueList = True
+	FlattenTreeView = True
+	DropdownTitle = "Select Scene"

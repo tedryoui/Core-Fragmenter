@@ -1,0 +1,10 @@
+OVDF v1.1
+RootLifetimeScope, Assembly-CSharp
+MetaGuid:63ea5c5eafb978744811fd962acf9ee1
+
+# _projectSettings
++ [Sirenix.OdinInspector.InlineButtonAttribute]
+	Action = "CreateNewProjectSettingsScriptableObject"
+	Label = "New"
+	ShowIf = "@this._projectSettings == null"
+	Icon = PlusSquareFill
