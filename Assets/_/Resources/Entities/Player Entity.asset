@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2563a162676e4493aa8ef2425cd4047c, type: 3}
+  m_Name: Player Entity
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.Concrete.Entities.PlayerEntityScriptableObject
+  _identity: Player
+  _type: 1
+  _monoEntityPrefab: {fileID: 2516304032199860014, guid: bd31f67c528597d44b34a4a671ab67db, type: 3}
+  _abstractEntityType: 

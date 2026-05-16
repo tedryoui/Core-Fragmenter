@@ -5,16 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/AbstractState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/AbstractState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Animation/Player/Player Animation Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Animation/Player/Player Animation Controller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/BaiscPlayerProfile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/BaiscPlayerProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot/Basic Bot.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot/Basic Bot.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/CoreConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/CoreConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Ammo Resource.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Ammo Resource.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Bit Resource.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Bit Resource.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/NeuroNode Resource.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/NeuroNode Resource.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Scrap Resource.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Scrap Resource.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/TradeConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/TradeConfig.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/SceneService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/SceneService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ScriptableObjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ScriptableObjectService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ScriptableObjectService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ScriptableObjectService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ServiceLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ServiceLocator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/UserInterfaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/UserInterfaceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/UserInterfaceService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/UserInterfaceService.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +60,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Player/PlayerMoveState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/OnAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityIdentityEnumFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scopes/GameplayLifetimeScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/PlayerEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/EntitiesCollectionScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/WorldService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@ad5ed25e82a3/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kyrylokuzyk.primetween@326989b1c8bc/Runtime/Internal/TweenGenerated.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections@538ace9075bc/Unity.Collections/AllocatorManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@c1460d42dff7/Runtime/Container.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -53,22 +80,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "gameplay-changes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gameplay-changes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.4.1f1\Editor\Unity.exe" />
@@ -117,6 +144,7 @@
       <workItem from="1778831105606" duration="15580000" />
       <workItem from="1778853542211" duration="1751000" />
       <workItem from="1778915851046" duration="7401000" />
+      <workItem from="1778956912035" duration="5433000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -174,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778931524209</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration">
+      <option name="closed" value="true" />
+      <created>1778940706106</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1778940706106</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +244,8 @@
     <MESSAGE value="Idea changes" />
     <MESSAGE value="Merge branch 'vContainer-setup'&#10;&#10;# Conflicts:&#10;#&#9;Assets/Synty/InterfaceSciFiSoldierHUD/Sprites/FX/SPR_FX_SciFi_EdgeOfScreen_DamageDirection_Dark.png.meta" />
     <MESSAGE value="URP Asset Setup&#10;* Fixed shadows" />
-    <option name="LAST_COMMIT_MESSAGE" value="URP Asset Setup&#10;* Fixed shadows" />
+    <MESSAGE value="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

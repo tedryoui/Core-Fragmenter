@@ -16,3 +16,5 @@ MonoBehaviour:
   _startSceneBuildIndex: 0
   _loadingSceneBuildIndex: 1
   _gameplaySceneBuildIndex: 2
+  _scriptableObjectsToCache:
+  - {fileID: 11400000, guid: 95efcf8e1283e5b4c80530df02fa55ef, type: 2}

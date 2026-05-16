@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace _.Scripts.Services
@@ -42,6 +43,27 @@ namespace _.Scripts.Services
             else
             {
                 Debug.Log($"<color=red>{identity} hasn't been removed!</color>");
+            }
+        }
+
+        public T Find<T>(string identity = "") 
+        where T : ScriptableObject
+        {
+            if (string.IsNullOrEmpty(identity))
+            {
+                var result = Values.FirstOrDefault(x => x.Value.GetType() == typeof(T));
+                
+                if (result.Value != null) 
+                    return result.Value as T;
+                else 
+                    throw new KeyNotFoundException($"<color=white>Scriptable Object with type {nameof(T)} was not found!</color>");
+            }
+            else
+            {
+                if (Values.TryGetValue(identity, out var scriptableObject)) 
+                    return scriptableObject as T;
+                else 
+                    throw new KeyNotFoundException($"<color=white>Scriptable Object with identity {identity} was not found!</color>");
             }
         }
     }

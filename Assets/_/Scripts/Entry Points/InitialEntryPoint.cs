@@ -26,6 +26,10 @@ namespace _.Scripts.Entry_Points
             
             _serviceLocator.Add(new ScriptableObjectService(), "SO Service");
             
+            var scriptableObjectsScene = _serviceLocator.Get<ScriptableObjectService>();
+            foreach (var scriptableObject in _projectSettings.ScriptableObjectsToCache)
+                scriptableObjectsScene.Add(scriptableObject, scriptableObject.name);
+            
             Debug.LogWarning($"ServiceLocator: {(_serviceLocator == null ? "UNDEFINED" : _serviceLocator.ToString())}");
             
             _serviceLocator.Add(new SceneService(), "Scene Service");

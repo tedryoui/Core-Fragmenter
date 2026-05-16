@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -36,9 +37,13 @@ namespace _.Scripts.Scriptable_Objects.Global
         [SerializeField] private int _loadingSceneBuildIndex;
         [SerializeField] private int _gameplaySceneBuildIndex;
 
+        [SerializeField] private List<ScriptableObject> _scriptableObjectsToCache;
+
         public string Version                => _version;
         public int    LoadingSceneBuildIndex => _loadingSceneBuildIndex;
         public int    GameplaySceneBuildIndex => _gameplaySceneBuildIndex;
+        
+        public IReadOnlyList<ScriptableObject> ScriptableObjectsToCache => _scriptableObjectsToCache;
 
 #if UNITY_EDITOR
         public static IEnumerable FriendlySceneBuildIndexList()
