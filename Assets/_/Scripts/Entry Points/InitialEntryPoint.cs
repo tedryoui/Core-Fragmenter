@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using _.Scripts.User_Interface;
 using Cysharp.Threading.Tasks;
@@ -10,10 +11,12 @@ namespace _.Scripts.Entry_Points
 {
     public class InitialEntryPoint : IStartable, IPostStartable
     {
+        ProjectSettingsScriptableObject _projectSettings;
         ServiceLocator _serviceLocator;
 
         public InitialEntryPoint(IObjectResolver resolver)
         {
+            _projectSettings = resolver.Resolve<ProjectSettingsScriptableObject>();
             _serviceLocator = resolver.Resolve<ServiceLocator>();
         }
         
@@ -37,25 +40,26 @@ namespace _.Scripts.Entry_Points
 
         public void PostStart()
         {
-            RunTransition();
+            LoadGameplayScene();
         }
-
-        private async UniTaskVoid RunTransition(CancellationToken cancellationToken = default)
+        
+        private async UniTaskVoid LoadGameplayScene()
         {
-            var userInterfaceService   = _serviceLocator.Get<UserInterfaceService>();
-
-            await UniTask.WaitUntil(() => userInterfaceService.Has<LoadingScreenViewModel>(),
-                cancellationToken: cancellationToken);
-            
-            var loadingScreenViewModel = userInterfaceService.Get<LoadingScreenViewModel>();
-            
-            loadingScreenViewModel.FadeIn(isInstant: true);
+            var sceneService = _serviceLocator.Get<SceneService>();
+            var transition = SceneService.SceneTransition
+                .Create()
+                .WithBuildIndex(_projectSettings.GameplaySceneBuildIndex)
+                .WithUseOverlay(true)
+                .WithUnloadCurrent()
+                .WithDuration(0.1f);
 
             await UniTask
-                .Delay(5000, cancellationToken: cancellationToken, ignoreTimeScale: true, cancelImmediately: true)
+                .WaitUntil(
+                    () => sceneService.IsInitialized, 
+                    cancellationToken: Application.exitCancellationToken)
                 .SuppressCancellationThrow();
             
-            loadingScreenViewModel.FadeOut(onComplete: () => {Debug.Log("Fade Completed!");});
+            sceneService.Perform(transition, Application.exitCancellationToken);
         }
     }
 }

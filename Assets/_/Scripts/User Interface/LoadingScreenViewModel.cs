@@ -31,9 +31,11 @@ namespace _.Scripts.User_Interface
                 return;
             }
             
+            var from = _container.style.opacity.value;
+            
             Tween.VisualElementOpacity(
                     _container,
-                    0.0f,
+                    from,
                     1.0f,
                     _containedFadeInDuration,
                     _containerFadeOutEase,
@@ -52,9 +54,11 @@ namespace _.Scripts.User_Interface
                 return;
             }
             
+            var from = _container.style.opacity.value;
+            
             Tween.VisualElementOpacity(
                     _container,
-                    1.0f,
+                    from,
                     0.0f,
                     _containedFadeOutDuration,
                     _containerFadeOutEase,

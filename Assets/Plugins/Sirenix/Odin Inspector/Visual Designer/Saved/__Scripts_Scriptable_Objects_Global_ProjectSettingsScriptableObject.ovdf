@@ -8,3 +8,19 @@ MetaGuid:b0d3083af7d245fca1de377b6849610a
 	IsUniqueList = True
 	FlattenTreeView = True
 	DropdownTitle = "Select Scene"
+
+# _gameplaySceneBuildIndex
++ [Sirenix.OdinInspector.ValueDropdownAttribute]
+	ValuesGetter = "FriendlySceneBuildIndexList"
+	IsUniqueList = True
+	FlattenTreeView = True
+	DropdownTitle = "Select Scene"
+
+# _startSceneBuildIndex
++ [Sirenix.OdinInspector.ValueDropdownAttribute]
+	ValuesGetter = "FriendlySceneBuildIndexList"
+	FlattenTreeView = True
+	IsUniqueList = True
++ [Sirenix.OdinInspector.OnValueChangedAttribute]
+	Action = "OnStartSceneBuildIndexChanged"
+	InvokeOnInitialize = True

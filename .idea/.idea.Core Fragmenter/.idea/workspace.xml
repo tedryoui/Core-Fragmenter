@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="" />
+    <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/__Scripts_Scriptable_Objects_Global_ProjectSettingsScriptableObject.ovdf" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/__Scripts_Scriptable_Objects_Global_ProjectSettingsScriptableObject.ovdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Build Profiles/Android™.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Build Profiles/Android™.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/LoadingScreenViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/LoadingScreenViewModel.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,13 +26,16 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="vContainer-setup" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@ad5ed25e82a3/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kyrylokuzyk.primetween@326989b1c8bc/Runtime/Internal/TweenGenerated.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@c1460d42dff7/Runtime/Container.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -40,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "scene-loading",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,13 +83,15 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="26208">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="26208" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -96,6 +111,7 @@
       <updated>1778831104250</updated>
       <workItem from="1778831105606" duration="15580000" />
       <workItem from="1778853542211" duration="1751000" />
+      <workItem from="1778915851046" duration="7401000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -137,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778854193724</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'vContainer-setup'&#10;&#10;# Conflicts:&#10;#&#9;Assets/Synty/InterfaceSciFiSoldierHUD/Sprites/FX/SPR_FX_SciFi_EdgeOfScreen_DamageDirection_Dark.png.meta">
+      <option name="closed" value="true" />
+      <created>1778915901062</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1778915901062</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +193,8 @@
     <MESSAGE value="Removed URP Unity Tutorial" />
     <MESSAGE value="New packages&#10;+ PrimeTween&#10;+ UniTask&#10;+ InAppPurchasing&#10;+ Cinemachine&#10;New changes&#10;+ User Interface logic&#10;+ Loading Screen UI&#10;+ Loading Screen View Model" />
     <MESSAGE value="Idea changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Idea changes" />
+    <MESSAGE value="Merge branch 'vContainer-setup'&#10;&#10;# Conflicts:&#10;#&#9;Assets/Synty/InterfaceSciFiSoldierHUD/Sprites/FX/SPR_FX_SciFi_EdgeOfScreen_DamageDirection_Dark.png.meta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'vContainer-setup'&#10;&#10;# Conflicts:&#10;#&#9;Assets/Synty/InterfaceSciFiSoldierHUD/Sprites/FX/SPR_FX_SciFi_EdgeOfScreen_DamageDirection_Dark.png.meta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -186,6 +211,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Utilities/UserInterfaceAutoRegisterer.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Utilities\UserInterfaceAutoRegisterer.cs" containingFunctionPresentation="Method 'Awake'">
+            <startOffsets>
+              <option value="402" />
+            </startOffsets>
+            <endOffsets>
+              <option value="459" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

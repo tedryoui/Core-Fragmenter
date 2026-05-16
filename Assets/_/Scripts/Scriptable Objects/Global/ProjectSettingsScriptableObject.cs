@@ -10,10 +10,35 @@ namespace _.Scripts.Scriptable_Objects.Global
     public class ProjectSettingsScriptableObject : ScriptableObject
     {
         [SerializeField] private string _version;
+        
+#if UNITY_EDITOR
+        [SerializeField] private int _startSceneBuildIndex;
+
+        public void OnStartSceneBuildIndexChanged()
+        {
+            var sceneEditorSettings = EditorBuildSettings.scenes[_startSceneBuildIndex];
+            
+            if (!sceneEditorSettings.enabled) return;
+            if (string.IsNullOrEmpty(sceneEditorSettings.path)) return;
+
+            var path = sceneEditorSettings.path;
+            var sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(path);
+            
+            EditorSceneManager.playModeStartScene = sceneAsset;
+            
+            var assetName = path.Split('/').Last();
+            var sceneName = assetName.Substring(0, assetName.Length - 6);
+            
+            Debug.LogWarning($"Updated start scene build index to {_startSceneBuildIndex} [{sceneName}]");
+        }
+#endif
+        
         [SerializeField] private int _loadingSceneBuildIndex;
+        [SerializeField] private int _gameplaySceneBuildIndex;
 
         public string Version                => _version;
         public int    LoadingSceneBuildIndex => _loadingSceneBuildIndex;
+        public int    GameplaySceneBuildIndex => _gameplaySceneBuildIndex;
 
 #if UNITY_EDITOR
         public static IEnumerable FriendlySceneBuildIndexList()

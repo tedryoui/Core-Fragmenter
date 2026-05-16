@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ProjectSettings
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.Global.ProjectSettingsScriptableObject
   _version: 0.0.1
+  _startSceneBuildIndex: 0
   _loadingSceneBuildIndex: 1
+  _gameplaySceneBuildIndex: 2

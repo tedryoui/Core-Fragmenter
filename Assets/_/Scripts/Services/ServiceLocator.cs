@@ -64,6 +64,30 @@ public class ServiceLocator : IInitializable
         }
     }
 
+    public bool Has<T>(string identity = "")
+    {
+        if (string.IsNullOrEmpty(identity))
+        {
+            var result = _services.FirstOrDefault(x => x.Value.GetType() == typeof(T));
+
+            return result.Value is not null;
+        }
+        else
+        {
+            if (_services.TryGetValue(identity, out var result))
+            {
+                if (result is T tResult)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
     public T Get<T>(string identity = "")
         where T : class, IService
     {
