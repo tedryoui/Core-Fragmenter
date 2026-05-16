@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/__Scripts_Scriptable_Objects_Global_ProjectSettingsScriptableObject.ovdf" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/__Scripts_Scriptable_Objects_Global_ProjectSettingsScriptableObject.ovdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Build Profiles/Android™.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Build Profiles/Android™.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/LoadingScreenViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/LoadingScreenViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "scene-loading",
+    "git-widget-placeholder": "gameplay-changes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,15 +75,13 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="26208">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="26208" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
