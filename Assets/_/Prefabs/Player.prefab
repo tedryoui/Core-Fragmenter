@@ -135,6 +135,8 @@ MonoBehaviour:
   _animator: {fileID: 2588544948936743259}
   _onAnimatorEvents: {fileID: 5186820558656213929}
   _rigidbody: {fileID: 586549685353221249}
+  _stoppingDistance: 0.15
+  _stoppingOffset: 0.15
 --- !u!1 &4975924007704216383
 GameObject:
   m_ObjectHideFlags: 0

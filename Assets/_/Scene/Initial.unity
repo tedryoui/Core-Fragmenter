@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1000211495}
   - component: {fileID: 1000211494}
   m_Layer: 0
-  m_Name: Entry Point
+  m_Name: Initial Lifetime Scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

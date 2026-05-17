@@ -16,3 +16,6 @@ MonoBehaviour:
   _type: 1
   _monoEntityPrefab: {fileID: 2516304032199860014, guid: bd31f67c528597d44b34a4a671ab67db, type: 3}
   _abstractEntityType: 
+  _dataPreset:
+    Speed: 1.2
+    AngularSpeed: 5

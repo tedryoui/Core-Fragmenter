@@ -29,6 +29,9 @@ namespace _.Scripts.Scriptable_Objects.Global
 #endif
             public EntityScriptableObject EntityScriptableObject;
 
+            [PropertySpace] 
+            public bool UseInjection;
+            
             [BoxGroup("Pool Information")]
             public bool UsePool;
             [ShowIf("UsePool"), BoxGroup("Pool Information")]

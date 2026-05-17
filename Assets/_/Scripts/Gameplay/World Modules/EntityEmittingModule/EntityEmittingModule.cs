@@ -25,7 +25,7 @@ namespace _.Scripts.Gameplay.World_Modules
             private quaternion _rotation;
             private float3     _scale;
 
-            private Action onComplete;
+            private Action<EntityScriptableObject> onComplete;
 
             public string Identity => _identity;
             public string Name => _name;
@@ -33,7 +33,7 @@ namespace _.Scripts.Gameplay.World_Modules
             public quaternion Rotation => _rotation;
             public float3 Scale => _scale;
             
-            public Action OnComplete => onComplete;
+            public Action<EntityScriptableObject> OnComplete => onComplete;
 
             private EmitInformation() { }
 
@@ -69,13 +69,14 @@ namespace _.Scripts.Gameplay.World_Modules
                 return this;
             }
 
-            public EmitInformation SetOnComplete(Action onComplete)
+            public EmitInformation SetOnComplete(Action<EntityScriptableObject> onComplete)
             {
                 this.onComplete = onComplete;
                 return this;
             }
         }
 
+        private IObjectResolver         _objectResolver;
         private WorldService            _worldService;
         private ScriptableObjectService _scriptableObjectService;
         
@@ -90,8 +91,9 @@ namespace _.Scripts.Gameplay.World_Modules
         }
         
         [Inject]
-        public void Configure(ServiceLocator serviceLocator)
+        public void Configure(IObjectResolver objectResolver, ServiceLocator serviceLocator)
         {
+            _objectResolver = objectResolver;
             _worldService = serviceLocator.Get<WorldService>();
             _scriptableObjectService = serviceLocator.Get<ScriptableObjectService>();
             
@@ -151,7 +153,7 @@ namespace _.Scripts.Gameplay.World_Modules
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = quaternion.identity;
             gameObject.transform.localScale    = new Vector3(1, 1, 1);
-
+            
             return null;
         }
 
@@ -190,6 +192,9 @@ namespace _.Scripts.Gameplay.World_Modules
             else
                 entity = await CreateEntity(element.EntityScriptableObject);
             
+            if (element.UseInjection)
+                _objectResolver.Inject(entity);
+            
             if (element.EntityScriptableObject.Type is EntityScriptableObject.EntityType.Mono)
             {
                 var monoEntity = (MonoEntity)entity;
@@ -201,7 +206,7 @@ namespace _.Scripts.Gameplay.World_Modules
         
             RegisterEntityInWorld(element, entity);
             
-            emitInformation.OnComplete?.Invoke();
+            emitInformation.OnComplete?.Invoke(element.EntityScriptableObject);
         }
 
         private IEntity ObtainGameObject(EntityScriptableObject scriptableObject)

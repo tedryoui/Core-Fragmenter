@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.Global.EntitiesCollectionScriptableObject
   _entities:
   - EntityScriptableObject: {fileID: 11400000, guid: f2bb2be2002d8b34a8cf9cd791276c2b, type: 2}
+    UseInjection: 1
     UsePool: 0
     PoolSize: 0

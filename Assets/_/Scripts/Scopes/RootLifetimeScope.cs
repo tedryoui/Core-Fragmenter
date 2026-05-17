@@ -1,3 +1,4 @@
+using _.Scripts.Gameplay.Player;
 using _.Scripts.Scriptable_Objects.Global;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class RootLifetimeScope : LifetimeScope
     
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.Register<PlayerProfile>(Lifetime.Singleton);
         builder.RegisterInstance<ProjectSettingsScriptableObject>(_projectSettings).AsSelf();
         builder.Register<ServiceLocator>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
     }
