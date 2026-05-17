@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +28,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/AbstractEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreRadiationState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreWeakState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneIdleState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Player/PlayerMoveState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/EntitySelfRegisterer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/OnAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityIdentityEnumFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scopes/GameplayLifetimeScope.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/EntitiesCollectionScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/WorldService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@ad5ed25e82a3/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kyrylokuzyk.primetween@326989b1c8bc/Runtime/Internal/TweenGenerated.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections@538ace9075bc/Unity.Collections/AllocatorManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -123,6 +128,7 @@
       <workItem from="1778915851046" duration="7401000" />
       <workItem from="1778956912035" duration="5832000" />
       <workItem from="1779001069177" duration="2244000" />
+      <workItem from="1779004456562" duration="1903000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -196,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778962795880</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added&#10;+ Drone Entity&#10;+ Drone Entity Scriptable Object&#10;+ Abstract Entity (non-mono) emitting logic">
+      <option name="closed" value="true" />
+      <created>1779004616348</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1779004616348</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +246,8 @@
     <MESSAGE value="URP Asset Setup&#10;* Fixed shadows" />
     <MESSAGE value="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration" />
     <MESSAGE value="Changes&#10;* Removed unsused ScriptableObject assets&#10;Added&#10;+ World service&#10;+ Entity Emit Module&#10;+ Entity Identity specification through enum (fabric)&#10;+ Gameplay Scene initialization&#10;+ Important Scriptable Object caching into ScriptableObject Service&#10;+ Entity Scriptable Object and Mono Entity instantiation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;* Removed unsused ScriptableObject assets&#10;Added&#10;+ World service&#10;+ Entity Emit Module&#10;+ Entity Identity specification through enum (fabric)&#10;+ Gameplay Scene initialization&#10;+ Important Scriptable Object caching into ScriptableObject Service&#10;+ Entity Scriptable Object and Mono Entity instantiation" />
+    <MESSAGE value="Added&#10;+ Drone Entity&#10;+ Drone Entity Scriptable Object&#10;+ Abstract Entity (non-mono) emitting logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Drone Entity&#10;+ Drone Entity Scriptable Object&#10;+ Abstract Entity (non-mono) emitting logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
