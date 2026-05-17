@@ -6,35 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/BaiscPlayerProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/BaiscPlayerProfile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot/Basic Bot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Bot/Basic Bot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/CoreConfig.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/CoreConfig.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Ammo Resource.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Ammo Resource.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Bit Resource.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Bit Resource.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/NeuroNode Resource.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/NeuroNode Resource.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Scrap Resource.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Resource/Scrap Resource.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/TradeConfig.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/TradeConfig.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/InitialEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/ProjectSettingsScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/SceneService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/SceneService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/SceneService.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ScriptableObjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ScriptableObjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ScriptableObjectService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ScriptableObjectService.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ServiceLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/ServiceLocator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/ServiceLocator.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/UserInterfaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/UserInterfaceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/UserInterfaceService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/UserInterfaceService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +29,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/AbstractEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneIdleState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Player/PlayerMoveState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/OnAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityIdentityEnumFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scopes/GameplayLifetimeScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/DroneEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/PlayerEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/EntitiesCollectionScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,7 +121,8 @@
       <workItem from="1778831105606" duration="15580000" />
       <workItem from="1778853542211" duration="1751000" />
       <workItem from="1778915851046" duration="7401000" />
-      <workItem from="1778956912035" duration="5433000" />
+      <workItem from="1778956912035" duration="5832000" />
+      <workItem from="1779001069177" duration="2244000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -210,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778940706106</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changes&#10;* Removed unsused ScriptableObject assets&#10;Added&#10;+ World service&#10;+ Entity Emit Module&#10;+ Entity Identity specification through enum (fabric)&#10;+ Gameplay Scene initialization&#10;+ Important Scriptable Object caching into ScriptableObject Service&#10;+ Entity Scriptable Object and Mono Entity instantiation">
+      <option name="closed" value="true" />
+      <created>1778962795880</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1778962795880</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +231,8 @@
     <MESSAGE value="Merge branch 'vContainer-setup'&#10;&#10;# Conflicts:&#10;#&#9;Assets/Synty/InterfaceSciFiSoldierHUD/Sprites/FX/SPR_FX_SciFi_EdgeOfScreen_DamageDirection_Dark.png.meta" />
     <MESSAGE value="URP Asset Setup&#10;* Fixed shadows" />
     <MESSAGE value="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ FSM abstraction&#10;+ Entity abstraction&#10;+ Player Entity&#10;+ Player MOVE and IDLE states&#10;+ Input System configuration" />
+    <MESSAGE value="Changes&#10;* Removed unsused ScriptableObject assets&#10;Added&#10;+ World service&#10;+ Entity Emit Module&#10;+ Entity Identity specification through enum (fabric)&#10;+ Gameplay Scene initialization&#10;+ Important Scriptable Object caching into ScriptableObject Service&#10;+ Entity Scriptable Object and Mono Entity instantiation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;* Removed unsused ScriptableObject assets&#10;Added&#10;+ World service&#10;+ Entity Emit Module&#10;+ Entity Identity specification through enum (fabric)&#10;+ Gameplay Scene initialization&#10;+ Important Scriptable Object caching into ScriptableObject Service&#10;+ Entity Scriptable Object and Mono Entity instantiation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -274,6 +261,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Gameplay\Entity\MonoEntity.cs" containingFunctionPresentation="Method 'FriendlyPossibleStatesList'">
+            <startOffsets>
+              <option value="427" />
+            </startOffsets>
+            <endOffsets>
+              <option value="451" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

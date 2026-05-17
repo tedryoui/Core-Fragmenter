@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using _.Scripts.Gameplay.Entity;
 using _.Scripts.Scriptable_Objects;
 using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
-using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Pool;
 using VContainer;
-using Object = UnityEngine.Object;
+using Object = System.Object;
 
 namespace _.Scripts.Gameplay.World_Modules
 {
@@ -81,7 +81,13 @@ namespace _.Scripts.Gameplay.World_Modules
         
         private EntitiesCollectionScriptableObject _entitiesCollection;
 
-        public EntityEmittingModule() { }
+        private Transform _objectPoolRoot;
+        private Dictionary<string, ObjectPool<IEntity>> _objectPool;
+
+        public EntityEmittingModule()
+        {
+            _objectPool = new Dictionary<string, ObjectPool<IEntity>>();
+        }
         
         [Inject]
         public void Configure(ServiceLocator serviceLocator)
@@ -90,6 +96,88 @@ namespace _.Scripts.Gameplay.World_Modules
             _scriptableObjectService = serviceLocator.Get<ScriptableObjectService>();
             
             _entitiesCollection = _scriptableObjectService.Find<EntitiesCollectionScriptableObject>();
+
+            CreateObjectPools();
+        }
+
+        private void CreateObjectPools()
+        {
+            CreateObjectPoolRootTransform();
+            foreach (var entity in _entitiesCollection.Entities)
+            {
+                if (entity.UsePool)
+                {
+                    var root = CreateEntityPoolRootTransform(entity.EntityScriptableObject);
+                    
+                    var pool = new ObjectPool<IEntity>(
+                        () => CreatePoolEntity(entity.EntityScriptableObject, root),
+                        OnGetPoolEntity,
+                        OnReleasePoolEntity,
+                        OnDestroyPoolEntity,
+                        defaultCapacity: entity.PoolSize,
+                        maxSize: 999
+                    );
+
+                    if (_objectPool.TryAdd(entity.EntityScriptableObject.Identity, pool))
+                        Debug.Log($"Registered pool for entity {entity.EntityScriptableObject.Identity}.");
+                    else 
+                        throw new Exception($"Failed to register pool for entity {entity.EntityScriptableObject.Identity}.");
+                }
+            }
+        }
+
+        private void CreateObjectPoolRootTransform()
+        {
+            _objectPoolRoot                    = new GameObject("ObjectPool").transform;
+            _objectPoolRoot.transform.position = new Vector3(-999f, -999, -999);
+        }
+
+        private Transform CreateEntityPoolRootTransform(EntityScriptableObject scriptableObject)
+        {
+            var poolRoot = new GameObject($"{scriptableObject.Identity}_Pool").transform;
+            poolRoot.localPosition = Vector3.zero;
+            poolRoot.SetParent(_objectPoolRoot);
+            
+            return poolRoot;
+        }
+
+        private IEntity CreatePoolEntity(EntityScriptableObject scriptableObject, Transform parent)
+        {
+            var prefab     = scriptableObject.MonoEntityPrefab;
+            var gameObject = GameObject.Instantiate(prefab, parent, true);
+            
+            gameObject.gameObject.SetActive(false);
+            
+            gameObject.transform.localPosition = Vector3.zero;
+            gameObject.transform.localRotation = quaternion.identity;
+            gameObject.transform.localScale    = new Vector3(1, 1, 1);
+
+            return null;
+        }
+
+        private void OnGetPoolEntity(IEntity entity)
+        {
+            var monoEntity = entity as MonoEntity;
+            
+            monoEntity.gameObject.SetActive(true);
+            monoEntity.transform.SetParent(null);
+        }
+
+        private void OnReleasePoolEntity(IEntity entity)
+        {
+            var monoEntity = entity as MonoEntity;
+            
+            monoEntity.gameObject.SetActive(false);
+            monoEntity.transform.SetParent(_objectPoolRoot.Find($"{monoEntity.Identity}_Pool").transform);
+            
+            monoEntity.transform.localPosition = Vector3.zero;
+            monoEntity.transform.localRotation = quaternion.identity;
+            monoEntity.transform.localScale    = new Vector3(1, 1, 1);
+        }
+
+        private void OnDestroyPoolEntity(IEntity entity)
+        {
+            
         }
 
         public async UniTaskVoid Emit(EmitInformation emitInformation, CancellationToken cancellationToken = default)
@@ -98,7 +186,7 @@ namespace _.Scripts.Gameplay.World_Modules
             var entity = (IEntity)null;
 
             if (element.UsePool)
-                entity = await ObtainGameObject(element.EntityScriptableObject);
+                entity = ObtainGameObject(element.EntityScriptableObject);
             else
                 entity = await CreateEntity(element.EntityScriptableObject);
             
@@ -116,9 +204,16 @@ namespace _.Scripts.Gameplay.World_Modules
             emitInformation.OnComplete?.Invoke();
         }
 
-        private async UniTask<IEntity> ObtainGameObject(EntityScriptableObject scriptableObject)
+        private IEntity ObtainGameObject(EntityScriptableObject scriptableObject)
         {
-            return await CreateEntity(scriptableObject);
+            if (_objectPool.TryGetValue(scriptableObject.Identity, out ObjectPool<IEntity> objectPool))
+            {
+                var entity = objectPool.Get();
+                
+                return entity;
+            }
+
+            throw new Exception($"Cannot obtain entity {scriptableObject.Identity}.");
         }
 
         private async UniTask<IEntity> CreateEntity(EntityScriptableObject scriptableObject)
@@ -127,7 +222,7 @@ namespace _.Scripts.Gameplay.World_Modules
             
             if (scriptableObject.Type is EntityScriptableObject.EntityType.Mono)
             {
-                var result = await Object.InstantiateAsync(scriptableObject.MonoEntityPrefab);
+                var result = await UnityEngine.Object.InstantiateAsync(scriptableObject.MonoEntityPrefab);
 
                 entity = result[0];
             }
