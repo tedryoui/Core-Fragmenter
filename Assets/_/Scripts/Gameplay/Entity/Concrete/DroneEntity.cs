@@ -53,6 +53,34 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             new DroneDeployState(this),
             new DroneSearchShootTargetState(this),
             new DroneFollowShootTargetState(this),
+            new DroneShootTargetState(this)
         };
+
+        public override void Start()
+        {
+            base.Start();
+
+            NavMeshAgent.avoidancePriority = UnityEngine.Random.Range(0, 100);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            SyncEntityWithData();
+        }
+
+        private void SyncEntityWithData()
+        {
+            if (NavMeshAgent.updatePosition)
+                DroneData.Position = this.transform.position;
+            else 
+                this.transform.position = DroneData.Position;
+            
+            if (NavMeshAgent.updateRotation)
+                DroneData.Rotation = this.transform.rotation;
+            else
+                this.transform.rotation = DroneData.Rotation;
+        }
     }
 }

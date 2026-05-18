@@ -116,7 +116,7 @@ namespace _.Scripts.Data.Concrete
         }
     }
 
-    [Serializable]
+    [Serializable, HideLabel, InlineProperty]
     public struct CoreDataPreset : IDataPreset
     {
         public int   HealthPoints;

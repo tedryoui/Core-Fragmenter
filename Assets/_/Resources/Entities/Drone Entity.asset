@@ -16,3 +16,9 @@ MonoBehaviour:
   _type: 1
   _monoEntityPrefab: {fileID: 6127551624005289331, guid: 1cdeea5cc06a798438ce04b01bb2dc80, type: 3}
   _abstractEntityType: 
+  _dataPreset:
+    Speed: 2
+    AngularSpeed: 4
+    DealDamageDelay: 3
+    AgentNonChangePositionDelta: 0.5
+    AgentNonChangePositionDuration: 4

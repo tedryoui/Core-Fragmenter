@@ -46,7 +46,7 @@ namespace _.Scripts.Gameplay.Entity
             SetState(DefaultStateIdentity);
         }
 
-        private void Update()
+        public virtual void Update()
         {
             CurrentState?.OnUpdate();
         }

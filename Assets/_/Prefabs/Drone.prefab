@@ -84,6 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8234907601569122066}
   - component: {fileID: 6127551624005289331}
+  - component: {fileID: -6992442753737617035}
   - component: {fileID: 3013753252808168766}
   m_Layer: 0
   m_Name: Drone
@@ -124,6 +125,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Entity.Concrete.DroneEntity
   _defaultStateIdentity: Drone Idle
   _navMeshAgent: {fileID: 3013753252808168766}
+--- !u!114 &-6992442753737617035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560991654133433157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85673a9376bd42dcbb0b054a6590cc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Utility.Drone_Debugger
+  _entity: {fileID: 6127551624005289331}
 --- !u!195 &3013753252808168766
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -135,10 +149,10 @@ NavMeshAgent:
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

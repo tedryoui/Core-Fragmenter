@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Drone_Debugger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Drone_Debugger.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Prefabs/Core.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Prefabs/Core.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Prefabs/Drone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Prefabs/Drone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities Collection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities Collection.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities/Drone Entity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities/Drone Entity.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/CoreData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/CoreData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneIdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneIdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneReachTargetState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneReachTargetState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneShootTargetState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneShootTargetState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/MonoEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneFollowShootTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneFollowShootTargetState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneShootTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneShootTargetState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Extensions/NavMeshExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Extensions/NavMeshExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/DroneEntityScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/DroneEntityScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/WorldService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/WorldService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/IData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/AbstractEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,7 +62,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneShootTargetState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Player/PlayerMoveState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Player/PlayerProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Extensions/NavMeshExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/OnAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityIdentityEnumFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scopes/GameplayLifetimeScope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete.meta" root0="FORCE_HIGHLIGHTING" />
@@ -133,13 +131,15 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="31704">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="31704" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -167,6 +167,9 @@
       <workItem from="1779025512806" duration="1652000" />
       <workItem from="1779100301056" duration="9855000" />
       <workItem from="1779114262173" duration="7651000" />
+      <workItem from="1779122244471" duration="104000" />
+      <workItem from="1779128190417" duration="7309000" />
+      <workItem from="1779136269139" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -264,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779106919619</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added&#10;+ NavMesh package&#10;+ Drone Emittion from Emition Module&#10;+ Drone Data update&#10;+ Drone [Deploy to Follow] states">
+      <option name="closed" value="true" />
+      <created>1779122337739</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779122337739</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +314,8 @@
     <MESSAGE value="Added&#10;+ Drone Entity&#10;+ Drone Entity Scriptable Object&#10;+ Abstract Entity (non-mono) emitting logic" />
     <MESSAGE value="Added&#10;+ Core Entity&#10;+ Core Entity Self initialization" />
     <MESSAGE value="Changed&#10;+ Core Entity Scriptable Object data preset&#10;+ Core Entity States logic&#10;+ Core Entity initialization logic&#10;+ Moved AbstractState.OnUpdate invokation into MonoEntity update method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed&#10;+ Core Entity Scriptable Object data preset&#10;+ Core Entity States logic&#10;+ Core Entity initialization logic&#10;+ Moved AbstractState.OnUpdate invokation into MonoEntity update method" />
+    <MESSAGE value="Added&#10;+ NavMesh package&#10;+ Drone Emittion from Emition Module&#10;+ Drone Data update&#10;+ Drone [Deploy to Follow] states" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ NavMesh package&#10;+ Drone Emittion from Emition Module&#10;+ Drone Data update&#10;+ Drone [Deploy to Follow] states" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -321,30 +333,17 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreRadiationState.cs</url>
-          <line>29</line>
-          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Gameplay\Entity\State\Concrete\Core\CoreRadiationState.cs" containingFunctionPresentation="Method 'OnUpdate'">
+          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Drone/DroneFollowShootTargetState.cs</url>
+          <line>166</line>
+          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Gameplay\Entity\State\Concrete\Drone\DroneFollowShootTargetState.cs" containingFunctionPresentation="Method 'TackNonChangedPositionSituation'">
             <startOffsets>
-              <option value="739" />
+              <option value="5826" />
             </startOffsets>
             <endOffsets>
-              <option value="740" />
+              <option value="5839" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs</url>
-          <line>177</line>
-          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Gameplay\World Modules\EntityEmittingModule\EntityEmittingModule.cs" containingFunctionPresentation="Method 'OnGetPoolEntity'">
-            <startOffsets>
-              <option value="6343" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6381" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

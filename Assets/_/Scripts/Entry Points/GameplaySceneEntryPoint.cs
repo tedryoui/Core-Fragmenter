@@ -86,20 +86,26 @@ namespace _.Scripts.Entry_Points
 
         private void CreateAndRegisterDrone()
         {
-            var dronePivot   = GameObject.Find("TEMP_DRONE_PIVOT");
-            var dataService  = _serviceLocator.Get<DataService>();
-            var worldService = _serviceLocator.Get<WorldService>();
-            var droneData    = new DroneData("Drone_01");
+            var dronePivot      = GameObject.Find("TEMP_DRONE_PIVOT_1");
+            var otherDronePivot = GameObject.Find("TEMP_DRONE_PIVOT_2");
+            var dataService     = _serviceLocator.Get<DataService>();
+            var worldService    = _serviceLocator.Get<WorldService>();
+            var droneData       = new DroneData("Drone_01");
+            var otherDroneData  = new DroneData("Drone_02");
 
             var emitInformation = EntityEmittingModule.EmitInformation
                 .Create("Drone")
                 .WithPosition(dronePivot.transform.position)
                 .WithRotation(dronePivot.transform.rotation)
                 .WithScale(new float3(1.0f, 1.0f, 1.0f))
+                .SetRegisterInWorldService(false)
                 .SetOnComplete((so) =>
                 {
                     if (so is DroneEntityScriptableObject droneEntityScriptableObject)
+                    {
                         droneData.Fill(droneEntityScriptableObject.DataPreset);
+                        otherDroneData.Fill(droneEntityScriptableObject.DataPreset);
+                    }
                 });
             
             dataService.Add(droneData);
@@ -109,7 +115,23 @@ namespace _.Scripts.Entry_Points
                 var result = operation.GetResult();
                 
                 if (result is DroneEntity droneEntity)
+                {
                     droneEntity.AssignIdentity("Drone_01");
+                    worldService.Register(droneEntity.Identity, droneEntity);
+                }
+            });
+            
+            dataService.Add(otherDroneData);
+            operation = worldService.EntityEmittingModule.Emit(emitInformation).GetAwaiter();
+            operation.OnCompleted(() =>
+            {
+                var result = operation.GetResult();
+                
+                if (result is DroneEntity droneEntity)
+                {
+                    droneEntity.AssignIdentity("Drone_02");
+                    worldService.Register(droneEntity.Identity, droneEntity);
+                }
             });
         }
     }
