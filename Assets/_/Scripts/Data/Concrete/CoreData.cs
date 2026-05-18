@@ -1,5 +1,6 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,6 +25,20 @@ namespace _.Scripts.Data.Concrete
 #endregion
         
 #region Fields & Properties
+
+        private float3 _position;
+        public  float3 Position
+        {
+            get => _position;
+            set => _position = value;
+        }
+        
+        private quaternion _rotation;
+        public quaternion Rotation
+        {
+            get => _rotation;
+            set => _rotation = value;
+        }
 
         private int _maxHealthPoints;
         public int MaxHealthPoints => _maxHealthPoints;

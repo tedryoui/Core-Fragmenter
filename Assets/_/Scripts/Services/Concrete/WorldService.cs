@@ -18,6 +18,8 @@ namespace _.Scripts.Services
         
         private Dictionary<string, IEntity> _entities;
         
+        public IReadOnlyDictionary<string, IEntity> Entities => _entities;
+        
         public EntityEmittingModule EntityEmittingModule => _emittingModule;
 
         public WorldService()

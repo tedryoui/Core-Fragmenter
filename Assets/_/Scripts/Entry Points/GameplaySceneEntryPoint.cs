@@ -8,17 +8,20 @@ using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using Unity.Mathematics;
 using UnityEngine;
+using VContainer;
 using VContainer.Unity;
 
 namespace _.Scripts.Entry_Points
 {
     public class GameplaySceneEntryPoint : IInitializable, IStartable
     {
+        private IObjectResolver _objectResolver;
         private ServiceLocator _serviceLocator;
         private PlayerProfile  _profile;
         
-        public GameplaySceneEntryPoint(ServiceLocator serviceLocator, PlayerProfile profile)
+        public GameplaySceneEntryPoint(ServiceLocator serviceLocator, PlayerProfile profile, IObjectResolver objectResolver)
         {
+            _objectResolver = objectResolver;
             _serviceLocator = serviceLocator;
             _profile        = profile;
         }
@@ -34,6 +37,8 @@ namespace _.Scripts.Entry_Points
         {
             CreatePlayerObjectAndItsData();        
             RegisterCoreAndItsData();
+
+            CreateAndRegisterDrone();
         }
 
         private void CreatePlayerObjectAndItsData()
@@ -75,6 +80,37 @@ namespace _.Scripts.Entry_Points
             coreData.Fill(coreEntityScriptableObject.DataPreset);
             coreData.Reset();
             dataService.Add(coreData);
+            
+            _objectResolver.Inject(coreEntity);
+        }
+
+        private void CreateAndRegisterDrone()
+        {
+            var dronePivot   = GameObject.Find("TEMP_DRONE_PIVOT");
+            var dataService  = _serviceLocator.Get<DataService>();
+            var worldService = _serviceLocator.Get<WorldService>();
+            var droneData    = new DroneData("Drone_01");
+
+            var emitInformation = EntityEmittingModule.EmitInformation
+                .Create("Drone")
+                .WithPosition(dronePivot.transform.position)
+                .WithRotation(dronePivot.transform.rotation)
+                .WithScale(new float3(1.0f, 1.0f, 1.0f))
+                .SetOnComplete((so) =>
+                {
+                    if (so is DroneEntityScriptableObject droneEntityScriptableObject)
+                        droneData.Fill(droneEntityScriptableObject.DataPreset);
+                });
+            
+            dataService.Add(droneData);
+            var operation = worldService.EntityEmittingModule.Emit(emitInformation).GetAwaiter();
+            operation.OnCompleted(() =>
+            {
+                var result = operation.GetResult();
+                
+                if (result is DroneEntity droneEntity)
+                    droneEntity.AssignIdentity("Drone_01");
+            });
         }
     }
 }

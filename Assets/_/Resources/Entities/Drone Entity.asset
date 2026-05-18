@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5182f2ce254444aa55a887787330caa, type: 3}
   m_Name: Drone Entity
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.Concrete.Entities.DroneEntityScriptableObject
+  _identity: Drone
+  _type: 1
+  _monoEntityPrefab: {fileID: 6127551624005289331, guid: 1cdeea5cc06a798438ce04b01bb2dc80, type: 3}
+  _abstractEntityType: 

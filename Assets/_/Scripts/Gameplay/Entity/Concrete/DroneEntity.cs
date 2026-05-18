@@ -1,46 +1,58 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using _.Scripts.Data.Concrete;
 using _.Scripts.Gameplay.Entity.State.Concrete.Drone;
+using _.Scripts.Services;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AI;
+using VContainer;
 
 namespace _.Scripts.Gameplay.Entity.Concrete
 {
     public class DroneEntity : MonoEntity
     {
-        public override string Identity => "Drone";
+#region VContainer
+
+        [Inject] private ServiceLocator _serviceLocator;
+
+#endregion
+
+#region Mono Entity overrides
+
+        public override string Identity => _identity;
+
+#endregion
+
+#region Fields & Properties
+
+        private string _identity;
+
+        public void AssignIdentity(string identity)
+        {
+            _identity = identity;
+        }
+
+        [SerializeField] private NavMeshAgent _navMeshAgent;
+        public NavMeshAgent NavMeshAgent => _navMeshAgent;
+        
+        private WorldService _worldService;
+        public WorldService WorldService => _worldService ??= _serviceLocator.Get<WorldService>();
+        
+        private DataService _dataService;
+        public DataService DataService => _dataService ??= _serviceLocator.Get<DataService>();
+        
+        private DroneData _droneData;
+        public DroneData DroneData => _droneData ??= DataService.Get<DroneData>(Identity);
+
+#endregion
 
         public override List<AbstractState> PossibleStates => new()
         {
             new DroneIdleState(this),
-            new DroneReachTargetState(this),
-            new DroneShootTargetState(this),
+            new DroneDeployState(this),
+            new DroneSearchShootTargetState(this),
+            new DroneFollowShootTargetState(this),
         };
-
-        public override void Start()
-        {
-            base.Start();
-
-            SwitchStates(gameObject.GetCancellationTokenOnDestroy());
-        }
-
-        private async UniTaskVoid SwitchStates(CancellationToken token = default)
-        {
-            while (true)
-            {
-                if (token.IsCancellationRequested) return;
-                 
-                SetState("Drone Idle");
-                
-                await UniTask.Delay(2500, cancellationToken: token);
-                
-                SetState("Drone Reach Target");
-                
-                await UniTask.Delay(2500, cancellationToken: token);
-                
-                SetState("Drone Shoot Target");
-                
-                await UniTask.Delay(2500, cancellationToken: token);
-            }
-        }
     }
 }

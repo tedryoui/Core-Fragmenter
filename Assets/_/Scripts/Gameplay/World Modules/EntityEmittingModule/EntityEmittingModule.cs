@@ -19,11 +19,12 @@ namespace _.Scripts.Gameplay.World_Modules
     {
         public class EmitInformation
         {
-            private string _identity;
+            private string     _identity;
             private string     _name;
             private float3     _position;
             private quaternion _rotation;
             private float3     _scale;
+            private bool       _doRegisterInWorldService;
 
             private Action<EntityScriptableObject> onComplete;
 
@@ -32,16 +33,23 @@ namespace _.Scripts.Gameplay.World_Modules
             public float3 Position => _position;
             public quaternion Rotation => _rotation;
             public float3 Scale => _scale;
-            
+            public bool DoRegisterInWorldService => _doRegisterInWorldService;
+
             public Action<EntityScriptableObject> OnComplete => onComplete;
 
             private EmitInformation() { }
 
             public static EmitInformation Create([NotNull] string _identity)
             {
-                return new EmitInformation()
+                return new EmitInformation
                 {
-                    _identity = _identity
+                    _identity                 = _identity,
+                    _name                     = null,
+                    _position                 = default,
+                    _rotation                 = default,
+                    _scale                    = default,
+                    _doRegisterInWorldService = true,
+                    onComplete                = null,
                 };
             }
 
@@ -66,6 +74,12 @@ namespace _.Scripts.Gameplay.World_Modules
             public EmitInformation WithScale(float3 scale)
             {
                 this._scale = scale;
+                return this;
+            }
+
+            public EmitInformation SetRegisterInWorldService(bool value = true)
+            {
+                _doRegisterInWorldService = value;
                 return this;
             }
 
@@ -154,7 +168,7 @@ namespace _.Scripts.Gameplay.World_Modules
             gameObject.transform.localRotation = quaternion.identity;
             gameObject.transform.localScale    = new Vector3(1, 1, 1);
             
-            return null;
+            return gameObject;
         }
 
         private void OnGetPoolEntity(IEntity entity)
@@ -182,7 +196,7 @@ namespace _.Scripts.Gameplay.World_Modules
             
         }
 
-        public async UniTaskVoid Emit(EmitInformation emitInformation, CancellationToken cancellationToken = default)
+        public async UniTask<IEntity> Emit(EmitInformation emitInformation, CancellationToken cancellationToken = default)
         {
             var element    = _entitiesCollection.Get(emitInformation.Identity);
             var entity = (IEntity)null;
@@ -204,9 +218,11 @@ namespace _.Scripts.Gameplay.World_Modules
                 monoEntity.transform.localScale = emitInformation.Scale;
             }
         
-            RegisterEntityInWorld(element, entity);
+            if (emitInformation.DoRegisterInWorldService)
+                RegisterEntityInWorld(element, entity);
             
             emitInformation.OnComplete?.Invoke(element.EntityScriptableObject);
+            return entity;
         }
 
         private IEntity ObtainGameObject(EntityScriptableObject scriptableObject)

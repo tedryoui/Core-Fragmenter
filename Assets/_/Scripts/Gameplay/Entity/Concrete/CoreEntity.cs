@@ -20,9 +20,10 @@ namespace _.Scripts.Gameplay.Entity.Concrete
         [Inject]
         private void Configure(ServiceLocator serviceLocator)
         {
-            Debug.Log("Injected!");
-            
             _serviceLocator = serviceLocator;
+            
+            CoreData.Position = transform.position;
+            CoreData.Rotation = transform.rotation;
         }
 
 #endregion
