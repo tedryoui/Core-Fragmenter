@@ -17,3 +17,7 @@ MonoBehaviour:
     UseInjection: 1
     UsePool: 0
     PoolSize: 0
+  - EntityScriptableObject: {fileID: 11400000, guid: 4bd3461b470966a459b748478073b9b0, type: 2}
+    UseInjection: 0
+    UsePool: 0
+    PoolSize: 0

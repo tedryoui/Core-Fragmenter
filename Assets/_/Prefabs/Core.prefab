@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e03302ad96a4d4b87dce2d6eaf5a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Entity.Concrete.CoreEntity
-  _defaultStateIdentity: Core Weak
+  _defaultStateIdentity: Core Radiation
 --- !u!1 &7678203686379971815
 GameObject:
   m_ObjectHideFlags: 0

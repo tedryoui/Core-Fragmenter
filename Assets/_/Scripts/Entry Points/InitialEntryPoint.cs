@@ -37,9 +37,6 @@ namespace _.Scripts.Entry_Points
             Debug.LogWarning($"ServiceLocator: {(_serviceLocator == null ? "UNDEFINED" : _serviceLocator.ToString())}");
             
             _serviceLocator.Add(new DataService(), "Data Service");
-
-            var dataService = _serviceLocator.Get<DataService>();
-            dataService.Add(new PlayerData(_profile.ID));
             
             Debug.LogWarning($"ServiceLocator: {(_serviceLocator == null ? "UNDEFINED" : _serviceLocator.ToString())}");
             

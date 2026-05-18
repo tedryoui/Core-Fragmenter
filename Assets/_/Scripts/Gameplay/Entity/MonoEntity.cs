@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -43,6 +44,11 @@ namespace _.Scripts.Gameplay.Entity
         public virtual void Start()
         {
             SetState(DefaultStateIdentity);
+        }
+
+        private void Update()
+        {
+            CurrentState?.OnUpdate();
         }
 
         public void                              SetState(string identity)

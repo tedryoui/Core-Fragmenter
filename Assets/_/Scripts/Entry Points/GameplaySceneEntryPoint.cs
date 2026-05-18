@@ -4,6 +4,7 @@ using _.Scripts.Gameplay.Player;
 using _.Scripts.Gameplay.Utility.Extensions;
 using _.Scripts.Gameplay.World_Modules;
 using _.Scripts.Scriptable_Objects.Concrete.Entities;
+using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using Unity.Mathematics;
 using UnityEngine;
@@ -31,10 +32,18 @@ namespace _.Scripts.Entry_Points
 
         public void Start()
         {
-            var worldService = _serviceLocator.Get<WorldService>();
-            var dataService  = _serviceLocator.Get<DataService>();
-            var playerData   = dataService.Get<PlayerData>(_profile.ID);
+            CreatePlayerObjectAndItsData();        
+            RegisterCoreAndItsData();
+        }
 
+        private void CreatePlayerObjectAndItsData()
+        {
+            var dataService  = _serviceLocator.Get<DataService>();
+            var worldService = _serviceLocator.Get<WorldService>();
+            var playerData   = new PlayerData(_profile.ID);
+            
+            dataService.Add(playerData);
+            
             var emitInformation = EntityEmittingModule.EmitInformation
                 .Create(
                     EntityIdentityEnumFactory.BuildIdentity(EntityIdentityEnumFactory.EntityIdentityEnum.ENT_PLAYER)
@@ -48,8 +57,24 @@ namespace _.Scripts.Entry_Points
                     if (so is PlayerEntityScriptableObject playerEntityScriptableObject)
                         playerData.Fill(playerEntityScriptableObject.DataPreset);
                 });
-
             worldService.EntityEmittingModule.Emit(emitInformation);
+        }
+
+        private void RegisterCoreAndItsData()
+        {
+            var scriptableObjectsService   = _serviceLocator.Get<ScriptableObjectService>();
+            var worldService               = _serviceLocator.Get<WorldService>();
+            var dataService                = _serviceLocator.Get<DataService>();
+            var coreEntity                 = Object.FindAnyObjectByType<CoreEntity>(FindObjectsInactive.Include);
+            var entitiesCollection         = scriptableObjectsService.Find<EntitiesCollectionScriptableObject>();
+            var coreEntityScriptableObject = entitiesCollection.Get("Core").EntityScriptableObject as CoreEntityScriptableObject;
+            var coreData                   = new CoreData();
+            
+            worldService.Register(coreEntity.Identity, coreEntity);
+            
+            coreData.Fill(coreEntityScriptableObject.DataPreset);
+            coreData.Reset();
+            dataService.Add(coreData);
         }
     }
 }

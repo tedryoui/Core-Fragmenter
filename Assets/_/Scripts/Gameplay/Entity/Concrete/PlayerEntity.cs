@@ -97,11 +97,6 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             _input.Disable();
         }
 
-        private void Update()
-        {
-            CurrentState?.OnUpdate();
-        }
-
         private void FixedUpdate()
         {
             SyncRigidbodyWithData();
