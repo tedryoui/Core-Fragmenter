@@ -215,6 +215,7 @@ namespace _.Scripts.Services
             var loadingScreenUserInterface = userInterfaceService.Get<LoadingScreenViewModel>();
             var isCompleted                = false;
             
+            loadingScreenUserInterface.Show();
             loadingScreenUserInterface.FadeIn(onComplete: () => isCompleted = true);
             
             await UniTask.WaitUntil(() => isCompleted, cancellationToken: cancellationToken);
@@ -226,7 +227,11 @@ namespace _.Scripts.Services
             var loadingScreenUserInterface = userInterfaceService.Get<LoadingScreenViewModel>();
             var isCompleted                = false;
             
-            loadingScreenUserInterface.FadeOut(onComplete: () => isCompleted = true);
+            loadingScreenUserInterface.FadeOut(onComplete: () =>
+            {
+                isCompleted = true;
+                loadingScreenUserInterface.Hide();
+            });
             
             await UniTask.WaitUntil(() => isCompleted, cancellationToken: cancellationToken);
         }
