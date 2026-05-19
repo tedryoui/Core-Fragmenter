@@ -1,0 +1,102 @@
+.world-utility-window {
+    width: 200px;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: stretch;
+} 
+
+.world-utility-window__panel {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: rgba(24, 22, 26, 0.92);
+    border-width: 1px;
+    border-color: rgb(52, 48, 54);
+}
+
+.world-utility-window__bit {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 8px;
+}
+
+.world-utility-window__bit:last-child {
+    margin-bottom: 0;
+}
+
+.world-utility-window__bit--hidden {
+    display: none;
+}
+
+.world-utility-window__bit-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.world-utility-window__bit-label {
+    font-size: 10px;
+    color: rgb(150, 146, 152);
+    -unity-text-align: middle-left;
+    letter-spacing: 0.5px;
+}
+
+.world-utility-window__bit-value {
+    font-size: 10px;
+    color: rgb(220, 216, 222);
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    min-width: 48px;
+}
+
+.world-utility-window__progress-track {
+    height: 6px;
+    border-radius: 3px;
+    background-color: rgb(42, 39, 44);
+    overflow: hidden;
+}
+
+.world-utility-window__progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    transition-property: width;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+}
+
+.world-utility-window__progress-fill--health {
+    background-color: rgb(220, 72, 72);
+}
+
+.world-utility-window__progress-fill--loading {
+    background-color: rgb(90, 200, 250);
+}
+
+.world-utility-window__progress-fill--timer {
+    background-color: rgb(230, 180, 72);
+}
+
+.world-utility-window__action-button {
+    height: 32px;
+    border-width: 0;
+    border-radius: 8px;
+    background-color: rgb(58, 120, 160);
+    color: rgb(245, 245, 247);
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.world-utility-window__action-button:hover {
+    background-color: rgb(72, 140, 184);
+}
+
+.world-utility-window__action-button:disabled {
+    background-color: rgb(56, 52, 58);
+    color: rgb(120, 116, 122);
+}

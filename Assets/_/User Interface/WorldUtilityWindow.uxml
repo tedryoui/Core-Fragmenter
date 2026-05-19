@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/WorldUtilityWindow.uss?fileID=7433441132597879392&amp;guid=e8a1c4f72b3d5e9a0c6d8f1b4e7a2c50&amp;type=3#WorldUtilityWindow"/>
+    <ui:VisualElement name="Container" class="world-utility-window">
+        <ui:VisualElement class="world-utility-window__panel">
+            <ui:VisualElement name="health-bit" class="world-utility-window__bit world-utility-window__bit--hidden">
+                <ui:VisualElement class="world-utility-window__bit-header">
+                    <ui:Label name="health-label" text="HP" class="world-utility-window__bit-label"/>
+                    <ui:Label name="health-value" text="0 / 0" class="world-utility-window__bit-value"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="world-utility-window__progress-track">
+                    <ui:VisualElement name="health-fill" class="world-utility-window__progress-fill world-utility-window__progress-fill--health"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="loading-bit" class="world-utility-window__bit world-utility-window__bit--hidden">
+                <ui:VisualElement class="world-utility-window__bit-header">
+                    <ui:Label name="loading-label" text="Loading" class="world-utility-window__bit-label"/>
+                    <ui:Label name="loading-value" text="0%" class="world-utility-window__bit-value"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="world-utility-window__progress-track">
+                    <ui:VisualElement name="loading-fill" class="world-utility-window__progress-fill world-utility-window__progress-fill--loading"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="timer-bit" class="world-utility-window__bit world-utility-window__bit--hidden">
+                <ui:VisualElement class="world-utility-window__bit-header">
+                    <ui:Label name="timer-title" text="Timer" class="world-utility-window__bit-label"/>
+                    <ui:Label name="timer-value" text="0:00" class="world-utility-window__bit-value"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="world-utility-window__progress-track">
+                    <ui:VisualElement name="timer-fill" class="world-utility-window__progress-fill world-utility-window__progress-fill--timer"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="button-bit" class="world-utility-window__bit world-utility-window__bit--hidden">
+                <ui:Button name="action-button" text="Action" class="world-utility-window__action-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

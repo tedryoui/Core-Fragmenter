@@ -1,0 +1,85 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/TradingWindow.uss?fileID=7433441132597879392&amp;guid=c3e8f1a24b5d6e7f9a0b1c2d3e4f5a61&amp;type=3#TradingWindow"/>
+    <ui:VisualElement name="Container" class="trading-window">
+        <ui:VisualElement class="trading-window__panel">
+            <ui:VisualElement class="trading-window__header">
+                <ui:Label text="TRADING" class="trading-window__title"/>
+                <ui:VisualElement class="trading-window__tabs-row">
+                    <ui:VisualElement class="trading-window__tabs-row-side"/>
+                    <ui:VisualElement class="trading-window__tabs">
+                        <ui:Button name="offers-tab" text="Offers" class="trading-window__tab trading-window__tab--active"/>
+                        <ui:Button name="basket-tab" text="Basket" class="trading-window__tab"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="trading-window__tabs-row-side trading-window__tabs-row-side--end">
+                        <ui:Button name="close-button" text="✕" class="trading-window__close-button"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="trading-window__content">
+                <ui:VisualElement name="offers-panel" class="trading-window__tab-panel">
+                    <ui:ScrollView name="offers-scroll" class="trading-window__scroll">
+                        <ui:VisualElement name="offers-list" class="trading-window__list"/>
+                    </ui:ScrollView>
+                    <ui:Label name="offers-empty" text="No offers available." class="trading-window__empty-label trading-window__tab-panel--hidden"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="basket-panel" class="trading-window__tab-panel trading-window__tab-panel--hidden">
+                    <ui:ScrollView name="basket-scroll" class="trading-window__scroll">
+                        <ui:VisualElement name="basket-list" class="trading-window__list"/>
+                    </ui:ScrollView>
+                    <ui:Label name="basket-empty" text="Basket is empty. Add offers from the Offers tab." class="trading-window__empty-label"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="trading-window__footer">
+            <ui:VisualElement class="trading-window__summary">
+                <ui:VisualElement class="trading-window__summary-group">
+                    <ui:Label text="Delivery time" class="trading-window__summary-label"/>
+                    <ui:Label name="delivery-time-value" text="—" class="trading-window__summary-value"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="trading-window__summary-group">
+                    <ui:Label text="Offer (bits)" class="trading-window__summary-label"/>
+                    <ui:Label name="bits-offer-value" text="0" class="trading-window__summary-value trading-window__summary-value--accent"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="trading-window__summary-group">
+                    <ui:Label text="Delivery (bits)" class="trading-window__summary-label"/>
+                    <ui:Label name="bits-delivery-value" text="0" class="trading-window__summary-value trading-window__summary-value--accent"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Button name="submit-offer-button" text="OFFER" class="trading-window__offer-button"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="templates" class="trading-window__templates" picking-mode="Ignore">
+            <ui:VisualElement name="offer-row-template" class="trading-window__offer-row">
+                <ui:VisualElement class="trading-window__offer-output">
+                    <ui:VisualElement name="output-icon" class="trading-window__resource-icon"/>
+                    <ui:Label name="output-amount" text="0" class="trading-window__resource-amount"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="inputs-row" class="trading-window__inputs-row"/>
+                <ui:VisualElement class="trading-window__separator">
+                    <ui:Label text="→" class="trading-window__separator-arrow"/>
+                </ui:VisualElement>
+                <ui:Button name="add-to-basket-button" text="Add to basket" class="trading-window__add-button"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="basket-row-template" class="trading-window__basket-row">
+                <ui:VisualElement class="trading-window__basket-output">
+                    <ui:VisualElement name="output-icon" class="trading-window__resource-icon"/>
+                    <ui:Label name="output-amount" text="0" class="trading-window__resource-amount"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="basket-meta" class="trading-window__basket-meta">
+                    <ui:Label name="basket-title" text="Offer" class="trading-window__basket-meta-title"/>
+                    <ui:Label name="basket-detail" text="" class="trading-window__basket-meta-detail"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="trading-window__basket-controls">
+                    <ui:Button name="decrease-quantity-button" text="−" class="trading-window__quantity-button"/>
+                    <ui:Label name="quantity-label" text="1" class="trading-window__quantity-label"/>
+                    <ui:Button name="increase-quantity-button" text="+" class="trading-window__quantity-button"/>
+                    <ui:Button name="remove-from-basket-button" text="Remove" class="trading-window__remove-button"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="resource-stack-template" class="trading-window__resource-stack">
+                <ui:VisualElement name="icon" class="trading-window__resource-icon"/>
+                <ui:Label name="amount" text="0" class="trading-window__resource-amount"/>
+                <ui:Label name="name" text="" class="trading-window__resource-name"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
