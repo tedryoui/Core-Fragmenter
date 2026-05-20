@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b98fbb95c5bde4da671aa31afa725a, type: 3}
   m_Name: Ammo Trade Config
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.TradeConfigScriptableObject
+  _identity: TRD_10_AMMO
   _tradeName: Ammo (10x)
+  _deliveryTime: 20
+  _baseCost: 100
   _inputResource: {fileID: 11400000, guid: b1acfdcd0dd0daa4186b6e783a8e9203, type: 2}
   _inputAmount: 5
   _outputResource: {fileID: 11400000, guid: b1f2b38a57bff9c4fa1272fc696b0c8e, type: 2}

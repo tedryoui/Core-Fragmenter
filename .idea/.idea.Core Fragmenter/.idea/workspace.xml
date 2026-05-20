@@ -6,14 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Trades/Ammo Trade Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Trades/Ammo Trade Config.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Trade Fabric/TradeFabricOpenedState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Trade Fabric/TradeFabricOpenedState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/TradeConfigScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/TradeConfigScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/User Interface/TradingWindow.uss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/User Interface/TradingWindow.uss.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/User Interface/TradingWindow.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/User Interface/TradingWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/CartItemControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/CartItemControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/TradeListItemControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/TradeListItemControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Events/TradeEvents.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Events/TradeEvents.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +34,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "tedryoui"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/tedryoui/Core-Fragmenter.git",
+    "accountId": "800a0bbf-9cbf-48d0-9025-ad8ff42236b4"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
@@ -85,11 +100,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/PlayerEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/EntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/EntitiesCollectionScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Global/TradeConfigsCollectionScriptableObject.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/ResourceConfigScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/TradeConfigScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/DataService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/WorldService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/User Interface/AbstractUserInterfaceViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/User Interface/WorldUtilityWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/User Interface/WorldUtilityWindowViewModel.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Utilities/UserInterfaceFaceCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -157,13 +175,15 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="14084">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="14084" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -197,6 +217,7 @@
       <workItem from="1779191644898" duration="5492000" />
       <workItem from="1779201969409" duration="2157000" />
       <workItem from="1779204272888" duration="1454000" />
+      <workItem from="1779302129052" duration="1784000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -310,7 +331,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779136570452</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object">
+      <option name="closed" value="true" />
+      <created>1779296938911</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779296938911</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object">
+      <option name="closed" value="true" />
+      <created>1779296947422</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779296947422</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +388,8 @@
     <MESSAGE value="Changed&#10;+ Core Entity Scriptable Object data preset&#10;+ Core Entity States logic&#10;+ Core Entity initialization logic&#10;+ Moved AbstractState.OnUpdate invokation into MonoEntity update method" />
     <MESSAGE value="Added&#10;+ NavMesh package&#10;+ Drone Emittion from Emition Module&#10;+ Drone Data update&#10;+ Drone [Deploy to Follow] states" />
     <MESSAGE value="Added&#10;+ Drone Shoot Target State&#10;+ Nav Mesh Agent destination soft calculation (with validation and position sampling)&#10;Changed&#10;+ Agent Stacked fallback to Idle state" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Drone Shoot Target State&#10;+ Nav Mesh Agent destination soft calculation (with validation and position sampling)&#10;Changed&#10;+ Agent Stacked fallback to Idle state" />
+    <MESSAGE value="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

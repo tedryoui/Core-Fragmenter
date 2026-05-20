@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using _.Scripts.Data.Concrete;
 using _.Scripts.Gameplay.Entity.Concrete.Trade_Fabric;
 using _.Scripts.Gameplay.Player;
+using _.Scripts.Scriptable_Objects;
+using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using _.Scripts.User_Interface;
 using UnityEngine;
@@ -38,7 +42,37 @@ namespace _.Scripts.Gameplay.Entity.Concrete
         private DataService _dataService;
         public DataService DataService => _dataService ??= _serviceLocator.Get<DataService>();
         
-        private UserInterfaceService _userInterfaceService;
-        public UserInterfaceService UserInterfaceService => _userInterfaceService ??= _serviceLocator.Get<UserInterfaceService>();
+        private UserInterfaceService                         _userInterfaceService;
+        public  UserInterfaceService                         UserInterfaceService => _userInterfaceService ??= _serviceLocator.Get<UserInterfaceService>();
+
+        private List<TradeConfigScriptableObject> _tradeList;
+        public List<TradeConfigScriptableObject> TradeList
+        {
+            get => _tradeList;
+            set => _tradeList = value;
+        }
+        
+        private TradeEntityData _tradeEntityData;
+        public TradeEntityData TradeEntityData => _tradeEntityData ?? _dataService.Get<TradeEntityData>(Identity);
+
+        public override void Update()
+        {
+            base.Update();
+
+            UpdateActiveTrades();
+        }
+
+        private void UpdateActiveTrades()
+        {
+            foreach (var tradeOrder in TradeEntityData.Orders.ToArray())
+            {
+                if (tradeOrder.IsCompleted())
+                {
+                    TradeEntityData.RemoveOrder(tradeOrder.Identity);
+                    
+                    Debug.Log($"Trade Order {tradeOrder.Identity} has been completed.");
+                }
+            }
+        }
     }
 }

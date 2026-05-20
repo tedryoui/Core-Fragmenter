@@ -6,6 +6,7 @@ namespace _.Scripts.Scriptable_Objects
     public class TradeConfigScriptableObject : ScriptableObject
     {
         [Header("Identity")]
+        [SerializeField] private string _identity;
         [SerializeField] private string _tradeName;
         [SerializeField] private float _deliveryTime;
         [SerializeField] private float _baseCost;
@@ -18,12 +19,13 @@ namespace _.Scripts.Scriptable_Objects
         [SerializeField] private ResourceConfigScriptableObject _outputResource;
         [SerializeField] private double _outputAmount;
 
-        public string TradeName => _tradeName;
-        public float DeliveryTime => _deliveryTime;
-        public float BaseCost => _baseCost;
-        public ResourceConfigScriptableObject InputResource => _inputResource;
-        public double InputAmount => _inputAmount;
+        public string                         Identity       => _identity;
+        public string                         TradeName      => _tradeName;
+        public float                          DeliveryTime   => _deliveryTime;
+        public float                          BaseCost       => _baseCost;
+        public ResourceConfigScriptableObject InputResource  => _inputResource;
+        public double                         InputAmount    => _inputAmount;
         public ResourceConfigScriptableObject OutputResource => _outputResource;
-        public double OutputAmount => _outputAmount;
+        public double                         OutputAmount   => _outputAmount;
     }
 }

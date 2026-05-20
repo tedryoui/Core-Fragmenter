@@ -1,5 +1,4 @@
 using _.Scripts.Scriptable_Objects;
-using _.Scripts.User_Interface.Events;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,13 +6,15 @@ namespace _.Scripts.User_Interface.Controls
 {
     public class CartItemControl : VisualElement
     {
-        private readonly string _tradeId;
-        private int             _quantity;
+        private readonly string                 _identity;
+        private readonly int                    _quantity;
+        private readonly TradingWindowViewModel _viewModel;
 
-        public CartItemControl(TradeConfigScriptableObject trade, string tradeId, int quantity)
+        public CartItemControl(TradeConfigScriptableObject trade, int quantity, TradingWindowViewModel viewModel)
         {
-            _tradeId  = tradeId;
-            _quantity = Mathf.Max(1, quantity);
+            _identity  = trade.Identity;
+            _quantity  = Mathf.Max(1, quantity);
+            _viewModel = viewModel;
 
             var asset = Resources.Load<VisualTreeAsset>("User Interface Templates/CartItemControl");
             if (asset == null)
@@ -36,22 +37,21 @@ namespace _.Scripts.User_Interface.Controls
             this.Q<Label>("delivery-time").text = FormatDeliveryTime(trade.DeliveryTime);
             this.Q<Label>("base-cost").text       = trade.BaseCost.ToString("N0");
 
-            var quantityLabel = this.Q<Label>("quantity-value");
-            quantityLabel.text = _quantity.ToString();
+            this.Q<Label>("quantity-value").text = _quantity.ToString();
 
             this.Q<Button>("decrease-button").clicked += () =>
             {
                 var next = _quantity - 1;
                 if (next <= 0)
-                    TradeEvents.RaiseTradeRemoved(_tradeId);
+                    _viewModel.RemoveTrade(_identity);
                 else
-                    TradeEvents.RaiseQuantityChanged(_tradeId, next);
+                    _viewModel.ChangeQuantity(_identity, next);
             };
 
             this.Q<Button>("increase-button").clicked += () =>
-                TradeEvents.RaiseQuantityChanged(_tradeId, _quantity + 1);
+                _viewModel.ChangeQuantity(_identity, _quantity + 1);
 
-            this.Q<Button>("remove-button").clicked += () => TradeEvents.RaiseTradeRemoved(_tradeId);
+            this.Q<Button>("remove-button").clicked += () => _viewModel.RemoveTrade(_identity);
         }
 
         private static void ApplyResource(VisualElement icon, Label amountLabel, ResourceConfigScriptableObject resource, double amount)

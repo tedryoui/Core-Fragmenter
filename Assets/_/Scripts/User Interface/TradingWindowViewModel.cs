@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _.Scripts.Data.Concrete;
 using _.Scripts.Scriptable_Objects;
 using _.Scripts.User_Interface.Controls;
-using _.Scripts.User_Interface.Events;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,11 +14,7 @@ namespace _.Scripts.User_Interface
         private const string CatalogTabClass = "trade-window__tab--active";
         private const string HiddenClass     = "trade-window__tab-panel--hidden";
 
-        [SerializeField] private TradeConfigScriptableObject[] _tradeConfigs = Array.Empty<TradeConfigScriptableObject>();
-        [SerializeField] private VisualTreeAsset               _tradeWindowLayout;
-
-        private readonly Dictionary<string, int>                          _cart        = new();
-        private readonly Dictionary<string, TradeConfigScriptableObject> _catalogById = new();
+        private readonly Dictionary<string, TradeConfigScriptableObject> _tradesByIdentity = new();
 
         private VisualElement _root;
         private VisualElement _catalogPanel;
@@ -41,41 +37,25 @@ namespace _.Scripts.User_Interface
         private Button _confirmOrderButton;
         private Button _closeButton;
 
+        public event Action OrderConfirmed;
+        public event Action WindowClosed;
+        public event Action OnClearCart;
+        public event Action<string> OnTradeAdded;
+        public event Action<string> OnTradeRemoved;
+        public event Action<string, int> OnQuantityChanged;
+
+        public Func<TradeEntityData.TradeOrder> GetOrder { get; set; }
         public Func<TradeOrderSummary> GetOrderSummary { get; set; }
 
         protected override void SoftInitialize()
         {
             _root = Document.rootVisualElement;
 
-            if (_tradeWindowLayout != null)
-            {
-                _root.Clear();
-                _tradeWindowLayout.CloneTree(_root);
-            }
-
             CacheElements();
             WireButtons();
-            BuildCatalog(_tradeConfigs);
-
-            TradeEvents.TradeAdded      += OnTradeAdded;
-            TradeEvents.TradeRemoved    += OnTradeRemoved;
-            TradeEvents.QuantityChanged += OnQuantityChanged;
-            TradeEvents.WindowClosed    += OnWindowClosed;
-            TradeEvents.OrderConfirmed  += OnOrderConfirmed;
-            TradeEvents.OrderUpdated    += RefreshAll;
-
+            RefreshCatalog();
             RefreshAll();
             SetVisible(false);
-        }
-
-        private void OnDestroy()
-        {
-            TradeEvents.TradeAdded      -= OnTradeAdded;
-            TradeEvents.TradeRemoved    -= OnTradeRemoved;
-            TradeEvents.QuantityChanged -= OnQuantityChanged;
-            TradeEvents.WindowClosed    -= OnWindowClosed;
-            TradeEvents.OrderConfirmed  -= OnOrderConfirmed;
-            TradeEvents.OrderUpdated    -= RefreshAll;
         }
 
         public override void Show()
@@ -91,37 +71,92 @@ namespace _.Scripts.User_Interface
             SetVisible(false);
         }
 
-        public void SetCatalog(IEnumerable<TradeConfigScriptableObject> trades) => BuildCatalog(trades);
-
-        public void ClearCart()
+        public void SetCatalog(IEnumerable<TradeConfigScriptableObject> trades)
         {
-            _cart.Clear();
-            TradeEvents.RaiseOrderUpdated();
-        }
-
-        private void BuildCatalog(IEnumerable<TradeConfigScriptableObject> trades)
-        {
-            _catalogById.Clear();
+            _tradesByIdentity.Clear();
 
             if (trades != null)
             {
                 foreach (var trade in trades)
                 {
-                    if (trade == null)
+                    if (trade == null || string.IsNullOrEmpty(trade.Identity))
                         continue;
 
-                    _catalogById[TradeIdUtility.GetId(trade)] = trade;
+                    _tradesByIdentity[trade.Identity] = trade;
                 }
             }
 
             RefreshCatalog();
+            RefreshAll();
         }
 
-        private void RefreshAll()
+        public void ClearCart()
         {
-            RefreshCatalog();
+            if (!HasOrderItems())
+                return;
+
+            OnClearCart?.Invoke();
+            RefreshAll();
+        }
+
+        public void AddTrade(string identity)
+        {
+            if (string.IsNullOrEmpty(identity) || ResolveTrade(identity) == null)
+                return;
+
+            OnTradeAdded?.Invoke(identity);
+            RefreshAll();
+            ShowCartTab();
+        }
+
+        public void RemoveTrade(string identity)
+        {
+            if (string.IsNullOrEmpty(identity))
+                return;
+
+            OnTradeRemoved?.Invoke(identity);
+            RefreshAll();
+        }
+
+        public void ChangeQuantity(string identity, int quantity)
+        {
+            if (string.IsNullOrEmpty(identity))
+                return;
+
+            if (quantity <= 0)
+            {
+                RemoveTrade(identity);
+                return;
+            }
+
+            if (ResolveTrade(identity) == null)
+                return;
+
+            OnQuantityChanged?.Invoke(identity, quantity);
+            RefreshAll();
+        }
+
+        public void RefreshAll()
+        {
             RefreshCart();
             RefreshSummaries();
+        }
+
+        public void ClearAll()
+        {
+            _tradesByIdentity.Clear();
+
+            OrderConfirmed     = null;
+            WindowClosed       = null;
+            OnClearCart        = null;
+            OnTradeAdded       = null;
+            OnTradeRemoved     = null;
+            OnQuantityChanged  = null;
+
+            GetOrder        = null;
+            GetOrderSummary = null;
+
+            RefreshAll();
         }
 
         private void ShowCatalogTab() => SetActiveTab(true);
@@ -152,8 +187,8 @@ namespace _.Scripts.User_Interface
         {
             _catalogTabButton.clicked   += () => SetActiveTab(true);
             _cartTabButton.clicked      += () => SetActiveTab(false);
-            _confirmOrderButton.clicked += () => TradeEvents.RaiseOrderConfirmed();
-            _closeButton.clicked        += () => TradeEvents.RaiseWindowClosed();
+            _confirmOrderButton.clicked += OnOrderConfirmed;
+            _closeButton.clicked        += OnWindowClosed;
         }
 
         private void SetActiveTab(bool showCatalog)
@@ -169,10 +204,14 @@ namespace _.Scripts.User_Interface
         {
             _catalogList.Clear();
 
-            foreach (var trade in _catalogById.Values.OrderBy(t => t.TradeName))
-                _catalogList.Add(new TradeListItemControl(trade));
+            var trades = _tradesByIdentity.Values
+                .OrderBy(trade => trade.TradeName)
+                .ToArray();
 
-            var hasItems = _catalogById.Count > 0;
+            foreach (var trade in trades)
+                _catalogList.Add(new TradeListItemControl(trade, this));
+
+            var hasItems = trades.Length > 0;
             _catalogEmptyLabel.EnableInClassList(HiddenClass, hasItems);
             _catalogList.style.display = hasItems ? DisplayStyle.Flex : DisplayStyle.None;
         }
@@ -182,16 +221,9 @@ namespace _.Scripts.User_Interface
             _cartList.Clear();
             var hasItems = false;
 
-            foreach (var tradeId in _cart.Keys.ToArray())
+            foreach (var (trade, quantity) in GetOrderLines())
             {
-                if (!_catalogById.TryGetValue(tradeId, out var trade))
-                    trade = ResolveTrade(tradeId);
-
-                if (trade == null)
-                    continue;
-
-                var quantity = Mathf.Max(1, _cart[tradeId]);
-                _cartList.Add(new CartItemControl(trade, tradeId, quantity));
+                _cartList.Add(new CartItemControl(trade, quantity, this));
                 hasItems = true;
             }
 
@@ -207,24 +239,37 @@ namespace _.Scripts.User_Interface
             ApplySummary(_cartDeliveryTimeValue, _cartBaseCostValue, _cartSurchargeValue, summary);
         }
 
+        private IEnumerable<(TradeConfigScriptableObject Trade, int Quantity)> GetOrderLines()
+        {
+            var order = GetOrder?.Invoke();
+            if (order == null || !order.HasItems)
+                yield break;
+
+            foreach (var line in order.Lines)
+            {
+                if (!_tradesByIdentity.TryGetValue(line.Identity, out var trade))
+                    continue;
+
+                yield return (trade, line.Quantity);
+            }
+        }
+
+        private bool HasOrderItems() => GetOrderLines().Any();
+
         private TradeOrderSummary ResolveOrderSummary()
         {
             if (GetOrderSummary != null)
                 return GetOrderSummary.Invoke();
 
-            if (_cart.Count == 0)
+            if (!HasOrderItems())
                 return default;
 
             double totalBaseCost          = 0d;
             float  maxDeliveryTime        = 0f;
             double totalDeliverySurcharge = 0d;
 
-            foreach (var (tradeId, quantity) in _cart)
+            foreach (var (trade, quantity) in GetOrderLines())
             {
-                var trade = ResolveTrade(tradeId);
-                if (trade == null)
-                    continue;
-
                 totalBaseCost         += trade.BaseCost * quantity;
                 maxDeliveryTime        = Mathf.Max(maxDeliveryTime, trade.DeliveryTime);
                 totalDeliverySurcharge += 0d;
@@ -233,42 +278,27 @@ namespace _.Scripts.User_Interface
             return new TradeOrderSummary(totalBaseCost, maxDeliveryTime, totalDeliverySurcharge);
         }
 
-        private TradeConfigScriptableObject ResolveTrade(string tradeId) =>
-            _catalogById.TryGetValue(tradeId, out var trade)
-                ? trade
-                : _tradeConfigs?.FirstOrDefault(config => config != null && TradeIdUtility.GetId(config) == tradeId);
+        private TradeConfigScriptableObject ResolveTrade(string identity) =>
+            string.IsNullOrEmpty(identity) || !_tradesByIdentity.TryGetValue(identity, out var trade)
+                ? null
+                : trade;
 
-        private void OnTradeAdded(string tradeId)
+        private void OnWindowClosed()
         {
-            _cart[tradeId] = _cart.TryGetValue(tradeId, out var quantity) ? quantity + 1 : 1;
-            TradeEvents.RaiseOrderUpdated();
-            ShowCartTab();
+            WindowClosed?.Invoke();
+            ClearAll();
+            Hide();
         }
-
-        private void OnTradeRemoved(string tradeId)
-        {
-            if (_cart.Remove(tradeId))
-                TradeEvents.RaiseOrderUpdated();
-        }
-
-        private void OnQuantityChanged(string tradeId, int quantity)
-        {
-            if (quantity <= 0)
-            {
-                OnTradeRemoved(tradeId);
-                return;
-            }
-
-            _cart[tradeId] = quantity;
-            TradeEvents.RaiseOrderUpdated();
-        }
-
-        private void OnWindowClosed() => Hide();
 
         private void OnOrderConfirmed()
         {
-            Debug.Log($"[Trading] Order confirmed with {_cart.Count} trade line(s).");
-            ClearCart();
+            if (!HasOrderItems())
+                return;
+
+            OrderConfirmed?.Invoke();
+            Debug.Log("[Trading] Order confirmed.");
+            OnClearCart?.Invoke();
+            RefreshAll();
             Hide();
         }
 
@@ -291,19 +321,18 @@ namespace _.Scripts.User_Interface
 
         private static string FormatCost(double value) => value.ToString("N0");
 
-        private static string FormatDeliveryTime(float hours)
+        private static string FormatDeliveryTime(float inputSeconds)
         {
-            if (hours <= 0f)
+            if (inputSeconds <= 0f)
                 return "Instant";
 
-            if (hours < 1f)
-                return $"{Mathf.CeilToInt(hours * 60f)} min";
-
-            if (hours < 24f)
-                return hours % 1f < 0.05f ? $"{hours:0} h" : $"{hours:0.#} h";
-
-            var days = hours / 24f;
-            return days % 1f < 0.05f ? $"{days:0} d" : $"{days:0.#} d";
+            var timeSpan = TimeSpan.FromSeconds(inputSeconds);
+            
+            var hours = timeSpan.Hours;
+            var minutes = timeSpan.Minutes;
+            var seconds =  timeSpan.Seconds;
+            
+            return $"{hours:00}:{minutes:00}:{seconds:00}";
         }
     }
 
@@ -319,11 +348,5 @@ namespace _.Scripts.User_Interface
         public double TotalBaseCost          { get; }
         public float  TotalDeliveryTime      { get; }
         public double TotalDeliverySurcharge { get; }
-    }
-
-    public static class TradeIdUtility
-    {
-        public static string GetId(TradeConfigScriptableObject trade) =>
-            string.IsNullOrEmpty(trade.name) ? trade.TradeName : trade.name;
     }
 }

@@ -1,6 +1,4 @@
 using _.Scripts.Scriptable_Objects;
-using _.Scripts.User_Interface.Events;
-using static _.Scripts.User_Interface.TradeIdUtility;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,12 +6,8 @@ namespace _.Scripts.User_Interface.Controls
 {
     public class TradeListItemControl : VisualElement
     {
-        private readonly string _tradeId;
-
-        public TradeListItemControl(TradeConfigScriptableObject trade)
+        public TradeListItemControl(TradeConfigScriptableObject trade, TradingWindowViewModel viewModel)
         {
-            _tradeId = TradeIdUtility.GetId(trade);
-
             var asset = Resources.Load<VisualTreeAsset>("User Interface Templates/TradeListItemControl");
             if (asset == null)
             {
@@ -22,10 +16,10 @@ namespace _.Scripts.User_Interface.Controls
             }
 
             asset.CloneTree(this);
-            Bind(trade);
+            Bind(trade, viewModel);
         }
 
-        private void Bind(TradeConfigScriptableObject trade)
+        private void Bind(TradeConfigScriptableObject trade, TradingWindowViewModel viewModel)
         {
             this.Q<Label>("trade-name").text = trade.TradeName;
 
@@ -35,7 +29,7 @@ namespace _.Scripts.User_Interface.Controls
             this.Q<Label>("delivery-time").text = FormatDeliveryTime(trade.DeliveryTime);
             this.Q<Label>("base-cost").text       = trade.BaseCost.ToString("N0");
 
-            this.Q<Button>("add-button").clicked += () => TradeEvents.RaiseTradeAdded(_tradeId);
+            this.Q<Button>("add-button").clicked += () => viewModel.AddTrade(trade.Identity);
         }
 
         private static void ApplyResource(VisualElement icon, Label amountLabel, ResourceConfigScriptableObject resource, double amount)

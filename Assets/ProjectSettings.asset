@@ -18,3 +18,4 @@ MonoBehaviour:
   _gameplaySceneBuildIndex: 2
   _scriptableObjectsToCache:
   - {fileID: 11400000, guid: 95efcf8e1283e5b4c80530df02fa55ef, type: 2}
+  - {fileID: 11400000, guid: a457be69c3143014dbc6c5f6a709fc79, type: 2}

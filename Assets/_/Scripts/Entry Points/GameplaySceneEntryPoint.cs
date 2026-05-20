@@ -1,11 +1,15 @@
-﻿using _.Scripts.Data.Concrete;
+﻿using System.Collections.Generic;
+using System.Linq;
+using _.Scripts.Data.Concrete;
 using _.Scripts.Gameplay.Entity.Concrete;
 using _.Scripts.Gameplay.Player;
 using _.Scripts.Gameplay.Utility.Extensions;
 using _.Scripts.Gameplay.World_Modules;
+using _.Scripts.Scriptable_Objects;
 using _.Scripts.Scriptable_Objects.Concrete.Entities;
 using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
+using Sirenix.OdinInspector.Editor.Drawers;
 using Unity.Mathematics;
 using UnityEngine;
 using VContainer;
@@ -37,6 +41,7 @@ namespace _.Scripts.Entry_Points
         {
             CreatePlayerObjectAndItsData();        
             RegisterCoreAndItsData();
+            RegisterAmmoFabricAndItsData();
 
             CreateAndRegisterDrone();
         }
@@ -133,6 +138,24 @@ namespace _.Scripts.Entry_Points
                     worldService.Register(droneEntity.Identity, droneEntity);
                 }
             });
+        }
+
+        private void RegisterAmmoFabricAndItsData()
+        {
+            var ammoFabric = Object.FindObjectsByType<TradeFabricEntity>()
+                .FirstOrDefault(x => x.Identity.Equals("Ammo Fabric"));
+            var soService = _serviceLocator.Get<ScriptableObjectService>();
+            var tradesSO  = soService.Find<TradeConfigsCollectionScriptableObject>();
+            var dataService =  _serviceLocator.Get<DataService>();
+            var ammoFabricData = new TradeEntityData("Ammo Fabric");
+            ammoFabricData.Fill(new TradeEntityDataPreset());
+            
+            ammoFabric.TradeList = new List<TradeConfigScriptableObject>()
+            {
+                tradesSO.Get("TRD_10_AMMO"),
+            };
+            
+            dataService.Add(ammoFabricData);
         }
     }
 }
