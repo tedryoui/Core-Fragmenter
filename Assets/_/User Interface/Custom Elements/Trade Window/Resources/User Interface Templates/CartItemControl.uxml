@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/Custom%20Elements/Trade%20Window/Resources/User%20Interface%20Templates/CartItemControl.uss"/>
+    <ui:VisualElement class="cart-item">
+        <ui:VisualElement class="cart-item__main">
+            <ui:Label name="trade-name" text="Trade" class="cart-item__name"/>
+            <ui:VisualElement class="cart-item__resources">
+                <ui:VisualElement class="cart-item__resource">
+                    <ui:VisualElement name="input-icon" class="cart-item__icon"/>
+                    <ui:Label name="input-amount" text="0" class="cart-item__amount"/>
+                </ui:VisualElement>
+                <ui:Label text="→" class="cart-item__arrow"/>
+                <ui:VisualElement class="cart-item__resource">
+                    <ui:VisualElement name="output-icon" class="cart-item__icon"/>
+                    <ui:Label name="output-amount" text="0" class="cart-item__amount"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="cart-item__meta">
+                <ui:Label name="delivery-time" text="—" class="cart-item__meta-value"/>
+                <ui:Label name="base-cost" text="0" class="cart-item__meta-value cart-item__meta-value--cost"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="cart-item__controls">
+            <ui:Button name="decrease-button" text="−" class="cart-item__quantity-button"/>
+            <ui:Label name="quantity-value" text="1" class="cart-item__quantity-value"/>
+            <ui:Button name="increase-button" text="+" class="cart-item__quantity-button"/>
+            <ui:Button name="remove-button" text="Remove" class="cart-item__remove-button"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

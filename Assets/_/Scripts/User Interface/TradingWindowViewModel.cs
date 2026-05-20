@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using _.Scripts.Scriptable_Objects;
+using _.Scripts.User_Interface.Controls;
+using _.Scripts.User_Interface.Events;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,494 +11,285 @@ namespace _.Scripts.User_Interface
 {
     public class TradingWindowViewModel : AbstractUserInterfaceViewModel
     {
-        [Serializable]
-        public struct ResourceStack
-        {
-            [SerializeField] private ResourceConfigScriptableObject _resource;
-            [SerializeField] private double                     _amount;
-
-            public ResourceConfigScriptableObject Resource => _resource;
-            public double                         Amount   => _amount;
-
-            public ResourceStack(ResourceConfigScriptableObject resource, double amount)
-            {
-                _resource = resource;
-                _amount   = amount;
-            }
-        }
-
-        [Serializable]
-        public class TradingOfferDefinition
-        {
-            [SerializeField] private string _offerId;
-            [SerializeField] private string _displayName;
-
-            [SerializeField] private ResourceConfigScriptableObject _outputResource;
-            [SerializeField] private double                         _outputAmount;
-
-            [SerializeField] private List<ResourceStack> _requiredInputs = new();
-
-            [SerializeField] private long   _bitsOfferPrice;
-            [SerializeField] private float  _deliveryTimeHours;
-            [SerializeField] private long   _bitsDeliveryPrice;
-
-            public string OfferId => string.IsNullOrEmpty(_offerId) ? _displayName : _offerId;
-            public string DisplayName => string.IsNullOrEmpty(_displayName) ? OfferId : _displayName;
-
-            public ResourceStack Output => new(_outputResource, _outputAmount);
-
-            public IReadOnlyList<ResourceStack> RequiredInputs => _requiredInputs;
-
-            public long  BitsOfferPrice    => _bitsOfferPrice;
-            public float DeliveryTimeHours => _deliveryTimeHours;
-            public long  BitsDeliveryPrice => _bitsDeliveryPrice;
-
-            public static TradingOfferDefinition FromTradeConfig(TradeConfigScriptableObject config)
-            {
-                var inputs = new List<ResourceStack>();
-
-                if (config.InputResource != null)
-                    inputs.Add(new ResourceStack(config.InputResource, config.InputAmount));
-
-                return new TradingOfferDefinition
-                {
-                    _displayName       = config.TradeName,
-                    _outputResource    = config.OutputResource,
-                    _outputAmount      = config.OutputAmount,
-                    _requiredInputs    = inputs
-                };
-            }
-        }
-
-        public sealed class TradingOffer
-        {
-            public TradingOffer(TradingOfferDefinition definition)
-            {
-                Definition = definition ?? throw new ArgumentNullException(nameof(definition));
-                OfferId    = Definition.OfferId;
-            }
-
-            public TradingOfferDefinition Definition { get; }
-            public string                 OfferId    { get; }
-        }
-
-        public sealed class BasketEntry
-        {
-            public BasketEntry(TradingOffer offer, int quantity = 1)
-            {
-                Offer    = offer    ?? throw new ArgumentNullException(nameof(offer));
-                Quantity = Mathf.Max(1, quantity);
-            }
-
-            public TradingOffer Offer    { get; }
-            public int          Quantity { get; set; }
-        }
+        private const string CatalogTabClass = "trade-window__tab--active";
+        private const string HiddenClass     = "trade-window__tab-panel--hidden";
 
         [SerializeField] private TradeConfigScriptableObject[] _tradeConfigs = Array.Empty<TradeConfigScriptableObject>();
-        [SerializeField] private TradingOfferDefinition[]        _customOffers = Array.Empty<TradingOfferDefinition>();
+        [SerializeField] private VisualTreeAsset               _tradeWindowLayout;
 
-        private readonly List<TradingOffer>  _catalog = new();
-        private readonly List<BasketEntry>   _basket  = new();
-        private readonly HashSet<string>     _basketOfferIds = new();
+        private readonly Dictionary<string, int>                          _cart        = new();
+        private readonly Dictionary<string, TradeConfigScriptableObject> _catalogById = new();
 
-        private VisualElement _container;
-        private VisualElement _offersPanel;
-        private VisualElement _basketPanel;
-        private VisualElement _offersList;
-        private VisualElement _basketList;
-        private Label         _offersEmptyLabel;
-        private Label         _basketEmptyLabel;
-        private Label         _deliveryTimeValue;
-        private Label         _bitsOfferValue;
-        private Label         _bitsDeliveryValue;
-        private Button        _offersTabButton;
-        private Button        _basketTabButton;
-        private Button        _submitOfferButton;
-        private Button        _closeButton;
+        private VisualElement _root;
+        private VisualElement _catalogPanel;
+        private VisualElement _cartPanel;
+        private VisualElement _catalogList;
+        private VisualElement _cartList;
+        private Label         _catalogEmptyLabel;
+        private Label         _cartEmptyLabel;
 
-        private VisualElement _offerRowTemplate;
-        private VisualElement _basketRowTemplate;
-        private VisualElement _resourceStackTemplate;
+        private Label _catalogDeliveryTimeValue;
+        private Label _catalogBaseCostValue;
+        private Label _catalogSurchargeValue;
 
-        private enum ActiveTab
-        {
-            Offers,
-            Basket
-        }
+        private Label _cartDeliveryTimeValue;
+        private Label _cartBaseCostValue;
+        private Label _cartSurchargeValue;
 
-        private ActiveTab _activeTab = ActiveTab.Offers;
+        private Button _catalogTabButton;
+        private Button _cartTabButton;
+        private Button _confirmOrderButton;
+        private Button _closeButton;
 
-        public event Action<IReadOnlyList<BasketEntry>> OfferSubmitted;
-        public event Action<BasketEntry>                BasketChanged;
-
-        public IReadOnlyList<TradingOffer> Catalog => _catalog;
-        public IReadOnlyList<BasketEntry>  Basket  => _basket;
+        public Func<TradeOrderSummary> GetOrderSummary { get; set; }
 
         protected override void SoftInitialize()
         {
-            var root = Document.rootVisualElement;
+            _root = Document.rootVisualElement;
 
-            _container            = root.Q<VisualElement>("Container");
-            _offersPanel          = root.Q<VisualElement>("offers-panel");
-            _basketPanel          = root.Q<VisualElement>("basket-panel");
-            _offersList           = root.Q<VisualElement>("offers-list");
-            _basketList           = root.Q<VisualElement>("basket-list");
-            _offersEmptyLabel     = root.Q<Label>("offers-empty");
-            _basketEmptyLabel     = root.Q<Label>("basket-empty");
-            _deliveryTimeValue    = root.Q<Label>("delivery-time-value");
-            _bitsOfferValue       = root.Q<Label>("bits-offer-value");
-            _bitsDeliveryValue    = root.Q<Label>("bits-delivery-value");
-            _offersTabButton      = root.Q<Button>("offers-tab");
-            _basketTabButton      = root.Q<Button>("basket-tab");
-            _submitOfferButton    = root.Q<Button>("submit-offer-button");
-            _closeButton          = root.Q<Button>("close-button");
+            if (_tradeWindowLayout != null)
+            {
+                _root.Clear();
+                _tradeWindowLayout.CloneTree(_root);
+            }
 
-            var templates = root.Q<VisualElement>("templates");
-            _offerRowTemplate       = templates.Q<VisualElement>("offer-row-template");
-            _basketRowTemplate      = templates.Q<VisualElement>("basket-row-template");
-            _resourceStackTemplate  = templates.Q<VisualElement>("resource-stack-template");
+            CacheElements();
+            WireButtons();
+            BuildCatalog(_tradeConfigs);
 
-            _offersTabButton.clicked   += () => SetActiveTab(ActiveTab.Offers);
-            _basketTabButton.clicked   += () => SetActiveTab(ActiveTab.Basket);
-            _submitOfferButton.clicked += SubmitOffer;
-            _closeButton.clicked       += Hide;
+            TradeEvents.TradeAdded      += OnTradeAdded;
+            TradeEvents.TradeRemoved    += OnTradeRemoved;
+            TradeEvents.QuantityChanged += OnQuantityChanged;
+            TradeEvents.WindowClosed    += OnWindowClosed;
+            TradeEvents.OrderConfirmed  += OnOrderConfirmed;
+            TradeEvents.OrderUpdated    += RefreshAll;
 
-            BuildCatalogFromSerializedData();
             RefreshAll();
             SetVisible(false);
         }
 
-        public void SetVisible(bool isVisible)
+        private void OnDestroy()
         {
-            if (_container == null)
-                return;
-
-            _container.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
+            TradeEvents.TradeAdded      -= OnTradeAdded;
+            TradeEvents.TradeRemoved    -= OnTradeRemoved;
+            TradeEvents.QuantityChanged -= OnQuantityChanged;
+            TradeEvents.WindowClosed    -= OnWindowClosed;
+            TradeEvents.OrderConfirmed  -= OnOrderConfirmed;
+            TradeEvents.OrderUpdated    -= RefreshAll;
         }
-
 
         public override void Show()
         {
             base.Show();
-            
             SetVisible(true);
+            RefreshAll();
         }
 
         public override void Hide()
         {
             base.Hide();
-            
             SetVisible(false);
         }
 
-        public void SetCatalog(IEnumerable<TradingOfferDefinition> offers)
-        {
-            _catalog.Clear();
+        public void SetCatalog(IEnumerable<TradeConfigScriptableObject> trades) => BuildCatalog(trades);
 
-            if (offers == null)
+        public void ClearCart()
+        {
+            _cart.Clear();
+            TradeEvents.RaiseOrderUpdated();
+        }
+
+        private void BuildCatalog(IEnumerable<TradeConfigScriptableObject> trades)
+        {
+            _catalogById.Clear();
+
+            if (trades != null)
             {
-                RefreshAll();
-                return;
+                foreach (var trade in trades)
+                {
+                    if (trade == null)
+                        continue;
+
+                    _catalogById[TradeIdUtility.GetId(trade)] = trade;
+                }
             }
 
-            foreach (var definition in offers)
-            {
-                if (definition == null || definition.Output.Resource == null)
-                    continue;
-
-                _catalog.Add(new TradingOffer(definition));
-            }
-
-            RefreshAll();
-        }
-
-        public void SetCatalogFromTradeConfigs(IEnumerable<TradeConfigScriptableObject> tradeConfigs)
-        {
-            if (tradeConfigs == null)
-            {
-                SetCatalog(null);
-                return;
-            }
-
-            var definitions = tradeConfigs
-                .Where(config => config != null)
-                .Select(TradingOfferDefinition.FromTradeConfig)
-                .ToArray();
-
-            SetCatalog(definitions);
-        }
-
-        public void ClearBasket()
-        {
-            _basket.Clear();
-            _basketOfferIds.Clear();
-            RefreshAll();
-        }
-
-        public bool TryAddToBasket(string offerId, int quantity = 1)
-        {
-            var offer = _catalog.FirstOrDefault(entry => entry.OfferId == offerId);
-            if (offer == null)
-                return false;
-
-            AddToBasket(offer, quantity);
-            return true;
-        }
-
-        public void AddToBasket(TradingOffer offer, int quantity = 1)
-        {
-            if (offer == null)
-                return;
-
-            quantity = Mathf.Max(1, quantity);
-
-            var existing = _basket.FirstOrDefault(entry => entry.Offer.OfferId == offer.OfferId);
-            if (existing != null)
-            {
-                existing.Quantity += quantity;
-            }
-            else
-            {
-                _basket.Add(new BasketEntry(offer, quantity));
-                _basketOfferIds.Add(offer.OfferId);
-            }
-
-            BasketChanged?.Invoke(existing ?? _basket[^1]);
-            RefreshAll();
-        }
-
-        public void RemoveFromBasket(string offerId)
-        {
-            var index = _basket.FindIndex(entry => entry.Offer.OfferId == offerId);
-            if (index < 0)
-                return;
-
-            _basket.RemoveAt(index);
-            _basketOfferIds.Remove(offerId);
-            RefreshAll();
-        }
-
-        public void SetBasketQuantity(string offerId, int quantity)
-        {
-            var entry = _basket.FirstOrDefault(line => line.Offer.OfferId == offerId);
-            if (entry == null)
-                return;
-
-            if (quantity <= 0)
-            {
-                RemoveFromBasket(offerId);
-                return;
-            }
-
-            entry.Quantity = quantity;
-            BasketChanged?.Invoke(entry);
-            RefreshAll();
-        }
-
-        private void BuildCatalogFromSerializedData()
-        {
-            var definitions = new List<TradingOfferDefinition>();
-
-            if (_customOffers is { Length: > 0 })
-                definitions.AddRange(_customOffers.Where(definition => definition != null));
-
-            if (_tradeConfigs is { Length: > 0 })
-                definitions.AddRange(_tradeConfigs.Where(config => config != null).Select(TradingOfferDefinition.FromTradeConfig));
-
-            SetCatalog(definitions);
-        }
-
-        private void SetActiveTab(ActiveTab tab)
-        {
-            _activeTab = tab;
-
-            var isOffersTab = tab == ActiveTab.Offers;
-
-            _offersPanel.EnableInClassList("trading-window__tab-panel--hidden", !isOffersTab);
-            _basketPanel.EnableInClassList("trading-window__tab-panel--hidden", isOffersTab);
-
-            _offersTabButton.EnableInClassList("trading-window__tab--active", isOffersTab);
-            _basketTabButton.EnableInClassList("trading-window__tab--active", !isOffersTab);
-        }
-
-        private void SubmitOffer()
-        {
-            if (_basket.Count == 0)
-                return;
-
-            OfferSubmitted?.Invoke(_basket.ToArray());
+            RefreshCatalog();
         }
 
         private void RefreshAll()
         {
-            RefreshOffersList();
-            RefreshBasketList();
-            RefreshSummary();
-            RefreshEmptyStates();
+            RefreshCatalog();
+            RefreshCart();
+            RefreshSummaries();
         }
 
-        private void RefreshOffersList()
-        {
-            _offersList.Clear();
+        private void ShowCatalogTab() => SetActiveTab(true);
 
-            foreach (var offer in _catalog)
-                _offersList.Add(BuildOfferRow(offer));
+        private void ShowCartTab() => SetActiveTab(false);
+
+        private void CacheElements()
+        {
+            _catalogPanel             = _root.Q<VisualElement>("catalog-panel");
+            _cartPanel                = _root.Q<VisualElement>("cart-panel");
+            _catalogList              = _root.Q<VisualElement>("catalog-list");
+            _cartList                 = _root.Q<VisualElement>("cart-list");
+            _catalogEmptyLabel        = _root.Q<Label>("catalog-empty");
+            _cartEmptyLabel           = _root.Q<Label>("cart-empty");
+            _catalogDeliveryTimeValue = _root.Q<Label>("catalog-delivery-time-value");
+            _catalogBaseCostValue     = _root.Q<Label>("catalog-base-cost-value");
+            _catalogSurchargeValue    = _root.Q<Label>("catalog-surcharge-value");
+            _cartDeliveryTimeValue    = _root.Q<Label>("cart-delivery-time-value");
+            _cartBaseCostValue        = _root.Q<Label>("cart-base-cost-value");
+            _cartSurchargeValue       = _root.Q<Label>("cart-surcharge-value");
+            _catalogTabButton         = _root.Q<Button>("catalog-tab");
+            _cartTabButton            = _root.Q<Button>("cart-tab");
+            _confirmOrderButton       = _root.Q<Button>("confirm-order-button");
+            _closeButton              = _root.Q<Button>("close-button");
         }
 
-        private VisualElement BuildOfferRow(TradingOffer offer)
+        private void WireButtons()
         {
-            var row = CloneTemplate(_offerRowTemplate);
+            _catalogTabButton.clicked   += () => SetActiveTab(true);
+            _cartTabButton.clicked      += () => SetActiveTab(false);
+            _confirmOrderButton.clicked += () => TradeEvents.RaiseOrderConfirmed();
+            _closeButton.clicked        += () => TradeEvents.RaiseWindowClosed();
+        }
 
-            ApplyResourceStack(row.Q<VisualElement>("output-icon"), row.Q<Label>("output-amount"), offer.Definition.Output);
+        private void SetActiveTab(bool showCatalog)
+        {
+            _catalogPanel.EnableInClassList(HiddenClass, !showCatalog);
+            _cartPanel.EnableInClassList(HiddenClass, showCatalog);
 
-            var inputsRow = row.Q<VisualElement>("inputs-row");
-            inputsRow.Clear();
+            _catalogTabButton.EnableInClassList(CatalogTabClass, showCatalog);
+            _cartTabButton.EnableInClassList(CatalogTabClass, !showCatalog);
+        }
 
-            foreach (var input in offer.Definition.RequiredInputs)
+        private void RefreshCatalog()
+        {
+            _catalogList.Clear();
+
+            foreach (var trade in _catalogById.Values.OrderBy(t => t.TradeName))
+                _catalogList.Add(new TradeListItemControl(trade));
+
+            var hasItems = _catalogById.Count > 0;
+            _catalogEmptyLabel.EnableInClassList(HiddenClass, hasItems);
+            _catalogList.style.display = hasItems ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+
+        private void RefreshCart()
+        {
+            _cartList.Clear();
+            var hasItems = false;
+
+            foreach (var tradeId in _cart.Keys.ToArray())
             {
-                if (input.Resource == null)
+                if (!_catalogById.TryGetValue(tradeId, out var trade))
+                    trade = ResolveTrade(tradeId);
+
+                if (trade == null)
                     continue;
 
-                inputsRow.Add(BuildResourceStack(input));
+                var quantity = Mathf.Max(1, _cart[tradeId]);
+                _cartList.Add(new CartItemControl(trade, tradeId, quantity));
+                hasItems = true;
             }
 
-            var addButton = row.Q<Button>("add-to-basket-button");
-            var isInBasket = _basketOfferIds.Contains(offer.OfferId);
+            _cartEmptyLabel.EnableInClassList(HiddenClass, hasItems);
+            _cartList.style.display = hasItems ? DisplayStyle.Flex : DisplayStyle.None;
+            _confirmOrderButton.SetEnabled(hasItems);
+        }
 
-            addButton.text = isInBasket ? "In basket" : "Add to basket";
-            addButton.EnableInClassList("trading-window__add-button--in-basket", isInBasket);
-            addButton.clicked += () =>
+        private void RefreshSummaries()
+        {
+            var summary = ResolveOrderSummary();
+            ApplySummary(_catalogDeliveryTimeValue, _catalogBaseCostValue, _catalogSurchargeValue, summary);
+            ApplySummary(_cartDeliveryTimeValue, _cartBaseCostValue, _cartSurchargeValue, summary);
+        }
+
+        private TradeOrderSummary ResolveOrderSummary()
+        {
+            if (GetOrderSummary != null)
+                return GetOrderSummary.Invoke();
+
+            if (_cart.Count == 0)
+                return default;
+
+            double totalBaseCost          = 0d;
+            float  maxDeliveryTime        = 0f;
+            double totalDeliverySurcharge = 0d;
+
+            foreach (var (tradeId, quantity) in _cart)
             {
-                AddToBasket(offer);
-                SetActiveTab(ActiveTab.Basket);
-            };
+                var trade = ResolveTrade(tradeId);
+                if (trade == null)
+                    continue;
 
-            return row;
+                totalBaseCost         += trade.BaseCost * quantity;
+                maxDeliveryTime        = Mathf.Max(maxDeliveryTime, trade.DeliveryTime);
+                totalDeliverySurcharge += 0d;
+            }
+
+            return new TradeOrderSummary(totalBaseCost, maxDeliveryTime, totalDeliverySurcharge);
         }
 
-        private void RefreshBasketList()
-        {
-            _basketList.Clear();
+        private TradeConfigScriptableObject ResolveTrade(string tradeId) =>
+            _catalogById.TryGetValue(tradeId, out var trade)
+                ? trade
+                : _tradeConfigs?.FirstOrDefault(config => config != null && TradeIdUtility.GetId(config) == tradeId);
 
-            foreach (var entry in _basket)
-                _basketList.Add(BuildBasketRow(entry));
+        private void OnTradeAdded(string tradeId)
+        {
+            _cart[tradeId] = _cart.TryGetValue(tradeId, out var quantity) ? quantity + 1 : 1;
+            TradeEvents.RaiseOrderUpdated();
+            ShowCartTab();
         }
 
-        private VisualElement BuildBasketRow(BasketEntry entry)
+        private void OnTradeRemoved(string tradeId)
         {
-            var row = CloneTemplate(_basketRowTemplate);
-            var definition = entry.Offer.Definition;
-
-            ApplyResourceStack(row.Q<VisualElement>("output-icon"), row.Q<Label>("output-amount"), definition.Output);
-
-            row.Q<Label>("basket-title").text = definition.DisplayName;
-            row.Q<Label>("basket-detail").text = BuildInputsSummary(definition.RequiredInputs);
-            row.Q<Label>("quantity-label").text = entry.Quantity.ToString();
-
-            var offerId = entry.Offer.OfferId;
-
-            row.Q<Button>("decrease-quantity-button").clicked += () => SetBasketQuantity(offerId, entry.Quantity - 1);
-            row.Q<Button>("increase-quantity-button").clicked += () => SetBasketQuantity(offerId, entry.Quantity + 1);
-            row.Q<Button>("remove-from-basket-button").clicked += () => RemoveFromBasket(offerId);
-
-            return row;
+            if (_cart.Remove(tradeId))
+                TradeEvents.RaiseOrderUpdated();
         }
 
-        private VisualElement BuildResourceStack(ResourceStack stack)
+        private void OnQuantityChanged(string tradeId, int quantity)
         {
-            var element = CloneTemplate(_resourceStackTemplate);
-
-            ApplyResourceStack(element.Q<VisualElement>("icon"), element.Q<Label>("amount"), stack);
-            element.Q<Label>("name").text = stack.Resource != null ? stack.Resource.ResourceName : string.Empty;
-
-            return element;
-        }
-
-        private static void ApplyResourceStack(VisualElement iconElement, Label amountLabel, ResourceStack stack)
-        {
-            if (stack.Resource?.ResourceIcon != null)
-                iconElement.style.backgroundImage = new StyleBackground(stack.Resource.ResourceIcon);
-            else
-                iconElement.style.backgroundImage = StyleKeyword.Null;
-
-            amountLabel.text = FormatAmount(stack.Amount);
-        }
-
-        private static VisualElement CloneTemplate(VisualElement template) => template;
-
-        private void RefreshSummary()
-        {
-            if (_basket.Count == 0)
+            if (quantity <= 0)
             {
-                _deliveryTimeValue.text = "—";
-                _bitsOfferValue.text      = "0";
-                _bitsDeliveryValue.text   = "0";
-                _submitOfferButton.SetEnabled(false);
+                OnTradeRemoved(tradeId);
                 return;
             }
 
-            var maxDeliveryHours = 0f;
-            long totalOfferBits      = 0;
-            long totalDeliveryBits   = 0;
-
-            foreach (var entry in _basket)
-            {
-                var definition = entry.Offer.Definition;
-                maxDeliveryHours = Mathf.Max(maxDeliveryHours, definition.DeliveryTimeHours);
-                totalOfferBits += definition.BitsOfferPrice * entry.Quantity;
-                totalDeliveryBits += definition.BitsDeliveryPrice * entry.Quantity;
-            }
-
-            _deliveryTimeValue.text = FormatDeliveryTime(maxDeliveryHours);
-            _bitsOfferValue.text      = FormatBits(totalOfferBits);
-            _bitsDeliveryValue.text   = FormatBits(totalDeliveryBits);
-            _submitOfferButton.SetEnabled(true);
+            _cart[tradeId] = quantity;
+            TradeEvents.RaiseOrderUpdated();
         }
 
-        private void RefreshEmptyStates()
+        private void OnWindowClosed() => Hide();
+
+        private void OnOrderConfirmed()
         {
-            var hasOffers  = _catalog.Count > 0;
-            var hasBasket  = _basket.Count > 0;
-
-            _offersEmptyLabel.EnableInClassList("trading-window__tab-panel--hidden", hasOffers);
-            _offersList.parent.style.display = hasOffers ? DisplayStyle.Flex : DisplayStyle.None;
-
-            _basketEmptyLabel.EnableInClassList("trading-window__tab-panel--hidden", hasBasket);
-            _basketList.parent.style.display = hasBasket ? DisplayStyle.Flex : DisplayStyle.None;
+            Debug.Log($"[Trading] Order confirmed with {_cart.Count} trade line(s).");
+            ClearCart();
+            Hide();
         }
 
-        private static string BuildInputsSummary(IReadOnlyList<ResourceStack> inputs)
+        private void SetVisible(bool isVisible)
         {
-            if (inputs == null || inputs.Count == 0)
-                return "No inputs";
+            if (_root == null)
+                return;
 
-            var builder = new StringBuilder();
-
-            for (var i = 0; i < inputs.Count; i++)
-            {
-                var stack = inputs[i];
-                if (stack.Resource == null)
-                    continue;
-
-                if (builder.Length > 0)
-                    builder.Append(" · ");
-
-                builder.Append(stack.Resource.ResourceName);
-                builder.Append(' ');
-                builder.Append(FormatAmount(stack.Amount));
-            }
-
-            return builder.Length == 0 ? "No inputs" : builder.ToString();
+            _root.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
-        private static string FormatAmount(double amount)
+        private static void ApplySummary(Label deliveryLabel, Label baseCostLabel, Label surchargeLabel, TradeOrderSummary summary)
         {
-            return amount >= 1000d
-                ? $"{amount:0,.0f}"
-                : amount.ToString(amount % 1d < 0.001d ? "0" : "0.##");
+            var hasOrder = summary.TotalBaseCost > 0d || summary.TotalDeliveryTime > 0f || summary.TotalDeliverySurcharge > 0d;
+
+            deliveryLabel.text  = hasOrder ? FormatDeliveryTime(summary.TotalDeliveryTime) : "—";
+            baseCostLabel.text  = hasOrder ? FormatCost(summary.TotalBaseCost) : "0";
+            surchargeLabel.text = hasOrder ? FormatCost(summary.TotalDeliverySurcharge) : "0";
         }
 
-        private static string FormatBits(long bits) => bits.ToString("N0");
+        private static string FormatCost(double value) => value.ToString("N0");
 
         private static string FormatDeliveryTime(float hours)
         {
@@ -513,5 +305,25 @@ namespace _.Scripts.User_Interface
             var days = hours / 24f;
             return days % 1f < 0.05f ? $"{days:0} d" : $"{days:0.#} d";
         }
+    }
+
+    public readonly struct TradeOrderSummary
+    {
+        public TradeOrderSummary(double totalBaseCost, float totalDeliveryTime, double totalDeliverySurcharge)
+        {
+            TotalBaseCost          = totalBaseCost;
+            TotalDeliveryTime      = totalDeliveryTime;
+            TotalDeliverySurcharge = totalDeliverySurcharge;
+        }
+
+        public double TotalBaseCost          { get; }
+        public float  TotalDeliveryTime      { get; }
+        public double TotalDeliverySurcharge { get; }
+    }
+
+    public static class TradeIdUtility
+    {
+        public static string GetId(TradeConfigScriptableObject trade) =>
+            string.IsNullOrEmpty(trade.name) ? trade.TradeName : trade.name;
     }
 }

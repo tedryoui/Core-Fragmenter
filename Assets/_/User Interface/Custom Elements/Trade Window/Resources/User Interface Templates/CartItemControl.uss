@@ -1,0 +1,121 @@
+.cart-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background-color: rgb(38, 36, 40);
+    border-width: 1px;
+    border-color: rgb(52, 48, 54);
+}
+
+.cart-item__main {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.cart-item__name {
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: rgb(235, 232, 236);
+    margin-bottom: 6px;
+}
+
+.cart-item__resources {
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-item__resource {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 6px;
+}
+
+.cart-item__icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 6px;
+    background-color: rgb(52, 48, 54);
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 4px;
+}
+
+.cart-item__amount {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgb(220, 216, 222);
+}
+
+.cart-item__arrow {
+    font-size: 14px;
+    color: rgb(120, 116, 122);
+    margin-right: 8px;
+}
+
+.cart-item__meta {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.cart-item__meta-value {
+    font-size: 11px;
+    color: rgb(170, 166, 172);
+    margin-right: 12px;
+}
+
+.cart-item__meta-value--cost {
+    color: rgb(120, 210, 255);
+    -unity-font-style: bold;
+}
+
+.cart-item__controls {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.cart-item__quantity-button {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-width: 0;
+    border-radius: 6px;
+    margin: 0 2px;
+    padding: 0;
+    background-color: rgb(52, 48, 54);
+    color: rgb(235, 232, 236);
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.cart-item__quantity-button:hover {
+    background-color: rgb(72, 68, 74);
+}
+
+.cart-item__quantity-value {
+    min-width: 28px;
+    font-size: 14px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    color: rgb(235, 232, 236);
+}
+
+.cart-item__remove-button {
+    height: 28px;
+    border-width: 0;
+    border-radius: 6px;
+    margin-left: 8px;
+    padding: 0 10px;
+    background-color: rgb(72, 48, 52);
+    color: rgb(235, 200, 204);
+    font-size: 11px;
+}
+
+.cart-item__remove-button:hover {
+    background-color: rgb(92, 58, 62);
+}
