@@ -1,0 +1,63 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/TradeWindow.uss"/>
+    <ui:VisualElement name="trade-window-root" class="trade-window">
+        <ui:VisualElement class="trade-window__panel">
+            <ui:VisualElement class="trade-window__header">
+                <ui:Label text="TRADING TERMINAL" class="trade-window__title"/>
+                <ui:VisualElement class="trade-window__tabs-row">
+                    <ui:VisualElement class="trade-window__tabs-row-side"/>
+                    <ui:VisualElement class="trade-window__tabs">
+                        <ui:Button name="catalog-tab" text="Catalog" class="trade-window__tab trade-window__tab--active"/>
+                        <ui:Button name="cart-tab" text="Cart" class="trade-window__tab"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="trade-window__tabs-row-side trade-window__tabs-row-side--end">
+                        <ui:Button name="close-button" text="✕" class="trade-window__close-button"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="trade-window__content">
+                <ui:VisualElement name="catalog-panel" class="trade-window__tab-panel">
+                    <ui:ScrollView name="catalog-scroll" class="trade-window__scroll">
+                        <ui:VisualElement name="catalog-list" class="trade-window__list"/>
+                    </ui:ScrollView>
+                    <ui:Label name="catalog-empty" text="No trades available." class="trade-window__empty-label trade-window__tab-panel--hidden"/>
+                    <ui:VisualElement class="trade-window__summary trade-window__summary--compact">
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Delivery time" class="trade-window__summary-label"/>
+                            <ui:Label name="catalog-delivery-time-value" text="—" class="trade-window__summary-value"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Base cost" class="trade-window__summary-label"/>
+                            <ui:Label name="catalog-base-cost-value" text="0" class="trade-window__summary-value trade-window__summary-value--accent"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Delivery surcharge" class="trade-window__summary-label"/>
+                            <ui:Label name="catalog-surcharge-value" text="0" class="trade-window__summary-value trade-window__summary-value--accent"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="cart-panel" class="trade-window__tab-panel trade-window__tab-panel--hidden">
+                    <ui:ScrollView name="cart-scroll" class="trade-window__scroll">
+                        <ui:VisualElement name="cart-list" class="trade-window__list"/>
+                    </ui:ScrollView>
+                    <ui:Label name="cart-empty" text="Cart is empty. Add trades from the Catalog tab." class="trade-window__empty-label"/>
+                    <ui:VisualElement class="trade-window__summary">
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Delivery time" class="trade-window__summary-label"/>
+                            <ui:Label name="cart-delivery-time-value" text="—" class="trade-window__summary-value"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Base cost" class="trade-window__summary-label"/>
+                            <ui:Label name="cart-base-cost-value" text="0" class="trade-window__summary-value trade-window__summary-value--accent"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="trade-window__summary-group trade-window__summary-group--highlight">
+                            <ui:Label text="Delivery surcharge" class="trade-window__summary-label"/>
+                            <ui:Label name="cart-surcharge-value" text="0" class="trade-window__summary-value trade-window__summary-value--accent"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Button name="confirm-order-button" text="CONFIRM ORDER" class="trade-window__confirm-button"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

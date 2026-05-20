@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_/User%20Interface/Custom%20Elements/Trade%20Window/Resources/User%20Interface%20Templates/TradeListItemControl.uss"/>
+    <ui:VisualElement class="trade-list-item">
+        <ui:Label name="trade-name" text="Trade" class="trade-list-item__name"/>
+        <ui:VisualElement class="trade-list-item__resources">
+            <ui:VisualElement class="trade-list-item__resource">
+                <ui:VisualElement name="input-icon" class="trade-list-item__icon"/>
+                <ui:Label name="resource-name" class="trade-list-item__resource-name"/>
+                <ui:Label name="input-amount" text="0" class="trade-list-item__amount"/>
+            </ui:VisualElement>
+            <ui:Label text="→" class="trade-list-item__arrow"/>
+            <ui:VisualElement class="trade-list-item__resource">
+                <ui:VisualElement name="output-icon" class="trade-list-item__icon"/>
+                <ui:Label name="output-amount" text="0" class="trade-list-item__amount"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="trade-list-item__meta">
+            <ui:Label name="delivery-time" text="—" class="trade-list-item__meta-value"/>
+            <ui:Label name="base-cost" text="0" class="trade-list-item__meta-value trade-list-item__meta-value--cost"/>
+        </ui:VisualElement>
+        <ui:Button name="add-button" text="Add" class="trade-list-item__add-button"/>
+    </ui:VisualElement>
+</ui:UXML>

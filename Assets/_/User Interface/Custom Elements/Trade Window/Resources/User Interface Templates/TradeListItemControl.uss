@@ -1,0 +1,99 @@
+.trade-list-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background-color: rgb(38, 36, 40);
+    border-width: 1px;
+    border-color: rgb(52, 48, 54);
+}
+
+.trade-list-item__name {
+    width: 120px;
+    flex-shrink: 0;
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: rgb(235, 232, 236);
+    -unity-text-align: middle-left;
+    margin-right: 10px;
+}
+
+.trade-list-item__resources {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+}
+
+.trade-list-item__resource {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 6px;
+}
+
+.trade-list-item__icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 6px;
+    background-color: rgb(52, 48, 54);
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 6px;
+}
+
+.trade-list-item__resource-name {
+    font-size: 11px;
+    color: rgb(170, 166, 172);
+    margin-right: 4px;
+    max-width: 72px;
+    overflow: hidden;
+}
+
+.trade-list-item__amount {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgb(220, 216, 222);
+    min-width: 36px;
+}
+
+.trade-list-item__arrow {
+    font-size: 14px;
+    color: rgb(120, 116, 122);
+    margin-left: 4px;
+    margin-right: 8px;
+}
+
+.trade-list-item__meta {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.trade-list-item__meta-value {
+    font-size: 11px;
+    color: rgb(170, 166, 172);
+    -unity-text-align: middle-right;
+}
+
+.trade-list-item__meta-value--cost {
+    color: rgb(120, 210, 255);
+    -unity-font-style: bold;
+}
+
+.trade-list-item__add-button {
+    min-width: 64px;
+    height: 32px;
+    border-width: 0;
+    border-radius: 8px;
+    background-color: rgb(62, 58, 66);
+    color: rgb(235, 232, 236);
+    font-size: 12px;
+    -unity-font-style: bold;
+    flex-shrink: 0;
+}
+
+.trade-list-item__add-button:hover {
+    background-color: rgb(82, 78, 86);
+}
