@@ -677,7 +677,6 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 797100158}
-  - {fileID: 1435173600}
 --- !u!4 &781446799
 Transform:
   m_ObjectHideFlags: 0
@@ -1008,9 +1007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f569d4e59c44648b53bbf1e0b95d962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Entity.Concrete.DroneFabricEntity
-  _defaultStateIdentity: Drone Fabric Idle
+  _defaultStateIdentity: 
   _identity: Drone Fabric
-  _worldUtilityWindowViewModel: {fileID: 167802776}
+  _worldUtilityWindowViewModel: {fileID: 0}
   _blueprints: []
 --- !u!4 &1435173602
 Transform:
