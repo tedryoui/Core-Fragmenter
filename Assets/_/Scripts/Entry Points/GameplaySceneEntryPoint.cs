@@ -42,6 +42,7 @@ namespace _.Scripts.Entry_Points
             CreatePlayerObjectAndItsData();        
             RegisterCoreAndItsData();
             RegisterAmmoFabricAndItsData();
+            RegisterDroneFabricAndItsData();
 
             CreateAndRegisterDrone();
         }
@@ -156,6 +157,25 @@ namespace _.Scripts.Entry_Points
             };
             
             dataService.Add(ammoFabricData);
+        }
+
+        private void RegisterDroneFabricAndItsData()
+        {
+            var droneFabric = Object.FindObjectsByType<DroneFabricEntity>()
+                .FirstOrDefault(x => x.Identity.Equals("Drone Fabric"));
+            var soService = _serviceLocator.Get<ScriptableObjectService>();
+            var blueprintSO = soService.Find<BlueprintsCollectionScriptableObject>();
+            var dataService = _serviceLocator.Get<DataService>();
+            var droneFabricData = new DroneFabricData("Drone Fabric");
+            droneFabricData.Fill(new DroneFabricDataPreset());
+
+            droneFabric.Blueprints = new List<BlueprintScriptableObject>()
+            {
+                blueprintSO.Get("BPT_DRONE_1"),
+                blueprintSO.Get("BPT_DRONE_2"),
+            };
+            
+            dataService.Add(droneFabricData);
         }
     }
 }

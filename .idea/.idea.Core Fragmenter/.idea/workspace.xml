@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Prefabs/Core.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Resources/Blueprints.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Resources/Resources.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Resources/Resources/Ammo Resource.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Resources/Resources/Ammo Resource.asset.meta" root0="FORCE_HIGHLIGHTING" />
@@ -50,12 +52,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/CoreData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneFabricData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/IData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/AbstractEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -207,7 +212,7 @@
       <workItem from="1779201969409" duration="2157000" />
       <workItem from="1779204272888" duration="1454000" />
       <workItem from="1779302129052" duration="2118000" />
-      <workItem from="1779354319524" duration="3919000" />
+      <workItem from="1779354319524" duration="7438000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -345,7 +350,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779304254549</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added&#10;+ Scrap resource&#10;+ Blueprint ScriptableObject&#10;+ Drone Blueprint">
+      <option name="closed" value="true" />
+      <created>1779369787438</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779369787438</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Changed&#10;* Bluepring Input/Output type&#10;Added&#10;+ Drone 2 Blueprint">
+      <option name="closed" value="true" />
+      <created>1779369955824</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1779369955824</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +409,9 @@
     <MESSAGE value="Added&#10;+ Drone Shoot Target State&#10;+ Nav Mesh Agent destination soft calculation (with validation and position sampling)&#10;Changed&#10;+ Agent Stacked fallback to Idle state" />
     <MESSAGE value="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object" />
     <MESSAGE value="Changed&#10;* Trade Config Scriptable Object&#10;* Trade Fabric Data&#10;* Trade Facric Entity&#10;Added&#10;+ Trade Config Collection&#10;+ Trade Fabric Data Preset&#10;+ Trade Confirm &amp; Proccessing logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed&#10;* Trade Config Scriptable Object&#10;* Trade Fabric Data&#10;* Trade Facric Entity&#10;Added&#10;+ Trade Config Collection&#10;+ Trade Fabric Data Preset&#10;+ Trade Confirm &amp; Proccessing logic" />
+    <MESSAGE value="Added&#10;+ Scrap resource&#10;+ Blueprint ScriptableObject&#10;+ Drone Blueprint" />
+    <MESSAGE value="Changed&#10;* Bluepring Input/Output type&#10;Added&#10;+ Drone 2 Blueprint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed&#10;* Bluepring Input/Output type&#10;Added&#10;+ Drone 2 Blueprint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
