@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,6 +20,13 @@ namespace _.Scripts.Scriptable_Objects
             Instant,
             Delayed
         }
+
+        [Serializable]
+        public struct BlueprintListing
+        {
+            public ResourceConfigScriptableObject ResourceConfig;
+            public uint                           Quantity;
+        }
         
         [SerializeField] private string _identity;
 
@@ -31,9 +39,9 @@ namespace _.Scripts.Scriptable_Objects
         [ShowIf("@this._blueprintProcess == BlueprintProcess.Delayed")]
         [SerializeField] private float _blueprintDuration;
         
-        [SerializeField] private List<ResourceConfigScriptableObject> _inputResources;
+        [SerializeField] private List<BlueprintListing> _inputResources;
         [ShowIf("@this._blueprintType == BlueprintType.Craft")]
-        [SerializeField] private ResourceConfigScriptableObject       _outputResource;
+        [SerializeField] private BlueprintListing       _outputResource;
         [ShowIf("@this._blueprintType == BlueprintType.Event")]
         [SerializeField] private string _eventIdentity;
 
@@ -47,8 +55,8 @@ namespace _.Scripts.Scriptable_Objects
 
         public float BlueprintDuration => _blueprintDuration;
 
-        public IReadOnlyCollection<ResourceConfigScriptableObject> InputResources => _inputResources;
+        public IReadOnlyCollection<BlueprintListing> InputResources => _inputResources;
 
-        public ResourceConfigScriptableObject OutputResource => _outputResource;
+        public BlueprintListing OutputResource => _outputResource;
     }
 }

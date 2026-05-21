@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc0a660adc754944ab80f84e4edd8245, type: 3}
-  m_Name: Drone 1 Blueprint
+  m_Name: Drone 2 Blueprint
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.BlueprintScriptableObject
-  _identity: BPT_DRONE_1
-  _title: First Drone
-  _baseCost: 0
+  _identity: BPT_DRONE_2
+  _title: Second Drone
+  _baseCost: 100
   _blueprintType: 2
-  _blueprintProcess: 0
-  _blueprintDuration: 0
-  _inputResources: []
+  _blueprintProcess: 1
+  _blueprintDuration: 5
+  _inputResources:
+  - {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
   _outputResource: {fileID: 0}
   _eventIdentity: AddDrone

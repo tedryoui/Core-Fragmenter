@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Trades/Ammo Trade Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Trades/Ammo Trade Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Trade Fabric/TradeFabricOpenedState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Trade Fabric/TradeFabricOpenedState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/TradeConfigScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/TradeConfigScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/CartItemControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/CartItemControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/TradeListItemControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Controls/TradeListItemControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Events/TradeEvents.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/Events/TradeEvents.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/User Interface/TradingWindowViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,18 +23,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "tedryoui"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tedryoui&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/tedryoui/Core-Fragmenter.git",
-    "accountId": "800a0bbf-9cbf-48d0-9025-ad8ff42236b4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tedryoui/Core-Fragmenter.git&quot;,
+    &quot;accountId&quot;: &quot;800a0bbf-9cbf-48d0-9025-ad8ff42236b4&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" root0="FORCE_HIGHLIGHTING" />
@@ -94,6 +83,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityIdentityEnumFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scopes/GameplayLifetimeScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/CoreEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/Concrete/Entities/DroneEntityScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
@@ -120,6 +110,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (1).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (2).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (3).unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (6).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@ad5ed25e82a3/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kyrylokuzyk.primetween@326989b1c8bc/Runtime/Internal/TweenGenerated.cs" root0="SKIP_HIGHLIGHTING" />
@@ -175,15 +166,13 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="14084">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14084" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -217,7 +206,8 @@
       <workItem from="1779191644898" duration="5492000" />
       <workItem from="1779201969409" duration="2157000" />
       <workItem from="1779204272888" duration="1454000" />
-      <workItem from="1779302129052" duration="1784000" />
+      <workItem from="1779302129052" duration="2118000" />
+      <workItem from="1779354319524" duration="3919000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -347,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779296947422</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Changed&#10;* Trade Config Scriptable Object&#10;* Trade Fabric Data&#10;* Trade Facric Entity&#10;Added&#10;+ Trade Config Collection&#10;+ Trade Fabric Data Preset&#10;+ Trade Confirm &amp; Proccessing logic">
+      <option name="closed" value="true" />
+      <created>1779304254549</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779304254549</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +387,8 @@
     <MESSAGE value="Added&#10;+ NavMesh package&#10;+ Drone Emittion from Emition Module&#10;+ Drone Data update&#10;+ Drone [Deploy to Follow] states" />
     <MESSAGE value="Added&#10;+ Drone Shoot Target State&#10;+ Nav Mesh Agent destination soft calculation (with validation and position sampling)&#10;Changed&#10;+ Agent Stacked fallback to Idle state" />
     <MESSAGE value="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Trade Window Controller&#10;Changed&#10;* Trade Config Scriptable Object" />
+    <MESSAGE value="Changed&#10;* Trade Config Scriptable Object&#10;* Trade Fabric Data&#10;* Trade Facric Entity&#10;Added&#10;+ Trade Config Collection&#10;+ Trade Fabric Data Preset&#10;+ Trade Confirm &amp; Proccessing logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed&#10;* Trade Config Scriptable Object&#10;* Trade Fabric Data&#10;* Trade Facric Entity&#10;Added&#10;+ Trade Config Collection&#10;+ Trade Fabric Data Preset&#10;+ Trade Confirm &amp; Proccessing logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -406,6 +405,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/TradeFabricEntity.cs</url>
+          <line>66</line>
+          <properties documentPath="C:\Users\ilya\Projects\Core Fragmenter\Assets\_\Scripts\Gameplay\Entity\Concrete\TradeFabricEntity.cs" containingFunctionPresentation="Method 'UpdateActiveTrades'">
+            <startOffsets>
+              <option value="2293" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2353" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
