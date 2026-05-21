@@ -989,6 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435173602}
   - component: {fileID: 1435173601}
+  - component: {fileID: 1435173603}
   m_Layer: 0
   m_Name: Drone Fabric
   m_TagString: Untagged
@@ -1031,6 +1032,20 @@ Transform:
   - {fileID: 1851133180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1435173603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435173600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f4d042058a4da692a1727cc245be72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Utility.DroneFabric_Debugger
+  _entity: {fileID: 1435173601}
+  _identity: 
 --- !u!1001 &1464496548
 PrefabInstance:
   m_ObjectHideFlags: 0

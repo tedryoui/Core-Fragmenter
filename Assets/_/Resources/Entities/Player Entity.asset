@@ -19,3 +19,6 @@ MonoBehaviour:
   _dataPreset:
     Speed: 1.2
     AngularSpeed: 5
+    DefaultBlueprints:
+    - Identity: BPT_DRONE_1
+      IsUnlocked: 1

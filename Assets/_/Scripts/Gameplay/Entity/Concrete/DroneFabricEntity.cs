@@ -66,5 +66,15 @@ namespace _.Scripts.Gameplay.Entity.Concrete
                 }
             }
         }
+
+        public void ConfirmOrder(DroneFabricData.Order order)
+        {
+            if (DroneFabricData.HasOrder(order.Identity))
+                return;
+            if (DroneFabricData.ActiveOrders.Count >= DroneFabricData.MaxActiveOrders)
+                return;
+            
+            DroneFabricData.AddOrder(order);
+        }
     }
 }

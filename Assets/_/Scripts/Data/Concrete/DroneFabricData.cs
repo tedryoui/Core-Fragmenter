@@ -70,10 +70,10 @@ namespace _.Scripts.Data.Concrete
 
         public void RemoveOrder(string identity)
         {
-            if (HasOrder(identity))
-                _activeOrders.RemoveAll(x => x.Identity.Equals(identity));
-            
-            throw new KeyNotFoundException($"Order {identity} not found!");
+            if (!HasOrder(identity))
+                throw new KeyNotFoundException($"Order {identity} not found!");
+                
+            _activeOrders.RemoveAll(x => x.Identity.Equals(identity));
         }
     }
 
