@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a660adc754944ab80f84e4edd8245, type: 3}
+  m_Name: Drone 1 Blueprint
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.BlueprintScriptableObject
+  _identity: BPT_DRONE_1
+  _title: First Drone
+  _baseCost: 0
+  _blueprintType: 2
+  _blueprintProcess: 0
+  _blueprintDuration: 0
+  _inputResources:
+  - {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
+  _outputResource: {fileID: 0}
+  _eventIdentity: AddDrone
