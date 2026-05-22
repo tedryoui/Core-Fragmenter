@@ -15,3 +15,4 @@ MonoBehaviour:
   _blueprints:
   - {fileID: 11400000, guid: 2aa97badbe9e5d24eab428006194930b, type: 2}
   - {fileID: 11400000, guid: 483e808849860824f9b20c51ef430df7, type: 2}
+  - {fileID: 11400000, guid: 02bcfea340d4a594c83f0453ebad8097, type: 2}

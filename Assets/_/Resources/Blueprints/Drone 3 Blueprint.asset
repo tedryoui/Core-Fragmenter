@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc0a660adc754944ab80f84e4edd8245, type: 3}
-  m_Name: Drone 1 Blueprint
+  m_Name: Drone 3 Blueprint
   m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Scriptable_Objects.BlueprintScriptableObject
-  _identity: BPT_DRONE_1
-  _title: First Drone
-  _baseCost: 0
-  _blueprintProcess: 0
-  _blueprintDuration: 0
-  _inputResources: []
+  _identity: BPT_DRONE_3
+  _title: Third Drone
+  _baseCost: 500
+  _blueprintProcess: 1
+  _blueprintDuration: 25
+  _inputResources:
+  - ResourceConfig: {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
+    Quantity: 100
   _outputEvents:
   - EventType: 2
     Data:
@@ -25,27 +27,5 @@ MonoBehaviour:
       _intValue: 0
       _floatValue: 0
       _boolValue: 0
-      _stringValue: BPT_DRONE_1
-      _objectValue: {fileID: 0}
-  - EventType: 1
-    Data:
-    - _dataType: 1
-      _intValue: 0
-      _floatValue: 0
-      _boolValue: 0
-      _stringValue: BPT_DRONE_2
-      _objectValue: {fileID: 0}
-  - EventType: 0
-    Data:
-    - _dataType: 1
-      _intValue: 0
-      _floatValue: 0
-      _boolValue: 0
       _stringValue: BPT_DRONE_3
-      _objectValue: {fileID: 0}
-    - _dataType: 3
-      _intValue: 0
-      _floatValue: 0
-      _boolValue: 0
-      _stringValue: 
       _objectValue: {fileID: 0}

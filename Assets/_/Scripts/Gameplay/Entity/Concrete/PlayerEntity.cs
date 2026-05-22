@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _.Scripts.Data.Concrete;
+using _.Scripts.Events;
 using _.Scripts.Gameplay.Player;
 using _.Scripts.Gameplay.Utility;
+using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
+using Core.Scripts.Helpers;
 using Unity.Mathematics;
 using UnityEngine;
 using VContainer;
@@ -14,14 +18,16 @@ namespace _.Scripts.Gameplay.Entity.Concrete
     {
 #region VContainer
 
-        private PlayerProfile _playerProfile;
-        private DataService   _dataService;
+        private PlayerProfile           _playerProfile;
+        private DataService             _dataService;
+        private ScriptableObjectService _scriptableObjectService;
 
         [Inject]
         private void Configure(ServiceLocator serviceLocator, IObjectResolver resolver)
         {
-            _dataService = serviceLocator.Get<DataService>();
-            _playerProfile = resolver.Resolve<PlayerProfile>();
+            _dataService             = serviceLocator.Get<DataService>();
+            _scriptableObjectService = serviceLocator.Get<ScriptableObjectService>();
+            _playerProfile           = resolver.Resolve<PlayerProfile>();
         }
 
 #endregion
@@ -79,6 +85,36 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             base.Start();
             
             OnAnimatorEvents.onAnimatorMoved += OnAnimatorMoved;
+            
+            EventBus.Instance.Subscribe<AddBlueprintEvent>(OnAddBlueprintEvent);
+            EventBus.Instance.Subscribe<UnlockBlueprintEvent>(OnUnlockBlueprintEvent);
+            EventBus.Instance.Subscribe<RemoveBlueprintEvent>(OnRemoveBlueprintEvent);
+        }
+
+        private bool DoesBlueprintExist(string identity)
+        {
+            var collection = _scriptableObjectService.Find<BlueprintsCollectionScriptableObject>();
+            var hasSO      = collection.Blueprints.Any(x => x.Identity.Equals(identity));
+
+            return hasSO;
+        }
+
+        private void OnRemoveBlueprintEvent(RemoveBlueprintEvent obj)
+        {
+            if (DoesBlueprintExist(obj.Identity))
+                PlayerData.Unlock.RemoveBlueprint(obj.Identity);
+        }
+
+        private void OnAddBlueprintEvent(AddBlueprintEvent e)
+        {
+            if (DoesBlueprintExist(e.Identity))
+                PlayerData.Unlock.AddBlueprint(e.Identity, e.Unlocked);
+        }
+
+        private void OnUnlockBlueprintEvent(UnlockBlueprintEvent e)
+        {
+            if (DoesBlueprintExist(e.Identity))
+                PlayerData.Unlock.UnlockBlueprint(e.Identity);
         }
 
         private void OnAnimatorMoved(Animator animator)
@@ -121,6 +157,10 @@ namespace _.Scripts.Gameplay.Entity.Concrete
         {
             _input.Disable();
             _input.Dispose();
+            
+            EventBus.Instance.Unsubscribe<AddBlueprintEvent>(OnAddBlueprintEvent);
+            EventBus.Instance.Unsubscribe<UnlockBlueprintEvent>(OnUnlockBlueprintEvent);
+            EventBus.Instance.Unsubscribe<RemoveBlueprintEvent>(OnRemoveBlueprintEvent);
         }
 
         private void OnDrawGizmosSelected()

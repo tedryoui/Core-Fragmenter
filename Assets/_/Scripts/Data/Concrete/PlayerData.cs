@@ -58,6 +58,25 @@ namespace _.Scripts.Data.Concrete
                 }
             }
 
+            public void UnlockBlueprint(string identity)
+            {
+                if (!_availableBlueprints.Contains(identity))
+                    throw new KeyNotFoundException($"{identity} blueprint is not in use!");
+                
+                _unlockedBlueprints.Add(identity);
+            }
+
+            public void UnlockBlueprint(IEnumerable<string> identity)
+            {
+                foreach (var id in identity)
+                {
+                    if (!_availableBlueprints.Contains(id))
+                        Debug.LogError($"{id} blueprint is not in use!");
+                    
+                    _unlockedBlueprints.Add(id);
+                }
+            }
+
             public void RemoveBlueprint(string identity)
             {
                 if (!_availableBlueprints.Remove(identity))

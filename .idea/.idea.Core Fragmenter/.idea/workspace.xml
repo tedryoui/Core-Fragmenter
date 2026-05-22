@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM_[Changes]/URP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints Collection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints Collection.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 1 Blueprint.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 1 Blueprint.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 2 Blueprint.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 2 Blueprint.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneFabricData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/DroneFabricData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/PlayerEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/PlayerEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +68,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/IData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/AddBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/RemoveBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/UnlockBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/AbstractEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneEntity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,6 +99,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Player/PlayerProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/DroneFabric_Debugger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Drone_Debugger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/EventBus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/Extensions/NavMeshExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/OnAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/TradingUI_Debugger.cs" root0="FORCE_HIGHLIGHTING" />
@@ -179,13 +191,15 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="6864">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="6864" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -222,7 +236,8 @@
       <workItem from="1779302129052" duration="2118000" />
       <workItem from="1779354319524" duration="12904000" />
       <workItem from="1779385233839" duration="39000" />
-      <workItem from="1779391582540" duration="1169000" />
+      <workItem from="1779391582540" duration="1600000" />
+      <workItem from="1779470120498" duration="3574000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -400,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779376227344</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added&#10;+ Player Data blueprints available/unlocked state controlling&#10;Changed&#10;* Player Data Preset, now it have default player blueprints">
+      <option name="closed" value="true" />
+      <created>1779393115766</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1779393115766</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +471,8 @@
     <MESSAGE value="Added&#10;+ Drone Fabric Entity&#10;+ Drone Fabric Data&#10;+ Blueprints Collection Scriptable Object&#10;+ Gameplay Drone Fabric Initialization" />
     <MESSAGE value="Changed&#10;* Gameplay Scene (new Drone Fabric entity)" />
     <MESSAGE value="Added&#10;+ Drone Fabric Idle State&#10;Changed&#10;* Drone Fabric Entity&#10;* Gameplay Scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Drone Fabric Idle State&#10;Changed&#10;* Drone Fabric Entity&#10;* Gameplay Scene" />
+    <MESSAGE value="Added&#10;+ Player Data blueprints available/unlocked state controlling&#10;Changed&#10;* Player Data Preset, now it have default player blueprints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Player Data blueprints available/unlocked state controlling&#10;Changed&#10;* Player Data Preset, now it have default player blueprints" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

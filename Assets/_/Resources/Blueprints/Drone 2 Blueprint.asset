@@ -15,10 +15,25 @@ MonoBehaviour:
   _identity: BPT_DRONE_2
   _title: Second Drone
   _baseCost: 100
-  _blueprintType: 2
   _blueprintProcess: 1
   _blueprintDuration: 5
   _inputResources:
-  - {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
-  _outputResource: {fileID: 0}
-  _eventIdentity: AddDrone
+  - ResourceConfig: {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
+    Quantity: 20
+  _outputEvents:
+  - EventType: 2
+    Data:
+    - _dataType: 1
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 0
+      _stringValue: BPT_DRONE_2
+      _objectValue: {fileID: 0}
+  - EventType: 1
+    Data:
+    - _dataType: 1
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 0
+      _stringValue: BPT_DRONE_3
+      _objectValue: {fileID: 0}

@@ -22,3 +22,5 @@ MonoBehaviour:
     DefaultBlueprints:
     - Identity: BPT_DRONE_1
       IsUnlocked: 1
+    - Identity: BPT_DRONE_2
+      IsUnlocked: 0

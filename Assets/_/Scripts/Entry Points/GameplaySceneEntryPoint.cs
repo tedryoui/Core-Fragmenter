@@ -173,6 +173,7 @@ namespace _.Scripts.Entry_Points
             {
                 blueprintSO.Get("BPT_DRONE_1"),
                 blueprintSO.Get("BPT_DRONE_2"),
+                blueprintSO.Get("BPT_DRONE_3"),
             };
             
             dataService.Add(droneFabricData);
