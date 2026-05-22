@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _.Scripts.Scriptable_Objects;
+using NUnit.Framework;
 using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
@@ -96,6 +97,57 @@ namespace _.Scripts.Data.Concrete
                 return false;
             }
         }
+
+        [Serializable]
+        public class ResourceListing
+        {
+            private Dictionary<string, int> _resources;
+
+            public ResourceListing()
+            {
+                _resources = new Dictionary<string, int>();
+            }
+
+            public void DepositeResource(string identity, int baseValue = 0)
+            {
+                if (!_resources.TryAdd(identity, baseValue))
+                    throw new Exception($"Resource {identity} is already in use!");
+            }
+
+            public void DepositeResource(IEnumerable<string> identities, IEnumerable<int> baseValues = null)
+            {
+                if (baseValues != null || baseValues.Count() != identities.Count())
+                    throw new ArgumentException($"{string.Join(", ", identities)} is {string.Join(", ", baseValues)}");
+                
+                for (int i = 0; i < identities.Count(); i++)
+                    DepositeResource(identities.ElementAt(i), baseValues.ElementAt(i));
+            }
+
+            public void WithdrawResource(string identity)
+            {
+                if (!_resources.Remove(identity))
+                    throw new Exception($"Resource {identity} is not in use!");
+            }
+
+            public void WithdrawResource(IEnumerable<string> identities)
+            {
+                foreach (var identity in identities)
+                    WithdrawResource(identity);
+            }
+
+            public bool HasResource(string identity)
+            {
+                return _resources.ContainsKey(identity);
+            }
+
+            public int GetResourceCount(string identity)
+            {
+                if (HasResource(identity))
+                    return _resources[identity];
+
+                throw new Exception($"Resource {identity} is not in use!");
+            }
+        }
         
 #endregion
 
@@ -113,6 +165,8 @@ namespace _.Scripts.Data.Concrete
         private float _angularSpeed;
 
         private UnlockListing _unlock;
+        
+        private ResourceListing _resource;
         
 #endregion
 
@@ -145,6 +199,8 @@ namespace _.Scripts.Data.Concrete
 
         public UnlockListing Unlock => _unlock;
 
+        public ResourceListing Resource => _resource;
+
 #endregion
 
         public PlayerData(string identity)
@@ -156,7 +212,8 @@ namespace _.Scripts.Data.Concrete
             
             _currentSpeed = 0f;
 
-            _unlock = new UnlockListing();
+            _unlock   = new UnlockListing();
+            _resource = new ResourceListing();
         }
 
         public IData<PlayerDataPreset> Fill(PlayerDataPreset presetData)
@@ -165,6 +222,7 @@ namespace _.Scripts.Data.Concrete
             _angularSpeed = presetData.AngularSpeed;
             
             _unlock.AddBlueprint(presetData.DefaultBlueprints.Select(x => x.Identity), presetData.DefaultBlueprints.Select(x => x.IsUnlocked));
+            _resource.DepositeResource(presetData.DefaultResources.Select(x => x.Identity), presetData.DefaultResources.Select(x => x.Count));
 
             return this;
         }
@@ -181,10 +239,20 @@ namespace _.Scripts.Data.Concrete
             [HorizontalGroup(Width = 56)] [HideLabel] [SuffixLabel("unlock")]
             public bool IsUnlocked;
         }
+
+        [Serializable]
+        public struct DefaultResourcePair
+        {
+            [HorizontalGroup]
+            public string Identity;
+            [HorizontalGroup(Width = 56)] [HideLabel] [SuffixLabel("count")]
+            public int Count;
+        }
         
         public float Speed;
         public float AngularSpeed;
         
         public List<DefaultBlueprintPair> DefaultBlueprints;
+        public List<DefaultResourcePair> DefaultResources;
     }
 }
