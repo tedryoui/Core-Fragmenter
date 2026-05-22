@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 2058479784861836721}
   - component: {fileID: 586549685353221249}
   - component: {fileID: 2516304032199860014}
+  - component: {fileID: -7408078018104888441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -137,6 +138,23 @@ MonoBehaviour:
   _rigidbody: {fileID: 586549685353221249}
   _stoppingDistance: 0.15
   _stoppingOffset: 0.15
+--- !u!114 &-7408078018104888441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724257769995296638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504a2fb1effe4acba63defceafa27b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_.Scripts.Gameplay.Utility.Player_Debugger
+  _entity: {fileID: 2516304032199860014}
+  _currentSpeed: 0
+  _availableBlueprints: []
+  _unlockedBlueprints: []
+  _resources: []
 --- !u!1 &4975924007704216383
 GameObject:
   m_ObjectHideFlags: 0

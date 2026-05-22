@@ -25,6 +25,9 @@ namespace _.Scripts.Data.Concrete
             private HashSet<string> _availableBlueprints;
             private HashSet<string> _unlockedBlueprints;
             
+            public IReadOnlyCollection<string> AvailableBlueprints => _availableBlueprints;
+            public IReadOnlyCollection<string> UnlockedBlueprints => _unlockedBlueprints;
+            
             public UnlockListing()
             {
                 _availableBlueprints = new HashSet<string>();
@@ -102,6 +105,8 @@ namespace _.Scripts.Data.Concrete
         public class ResourceListing
         {
             private Dictionary<string, int> _resources;
+            
+            public IReadOnlyDictionary<string, int> Resources => _resources;
 
             public ResourceListing()
             {
@@ -116,7 +121,7 @@ namespace _.Scripts.Data.Concrete
 
             public void DepositeResource(IEnumerable<string> identities, IEnumerable<int> baseValues = null)
             {
-                if (baseValues != null || baseValues.Count() != identities.Count())
+                if (baseValues != null && baseValues.Count() != identities.Count())
                     throw new ArgumentException($"{string.Join(", ", identities)} is {string.Join(", ", baseValues)}");
                 
                 for (int i = 0; i < identities.Count(); i++)
@@ -140,12 +145,20 @@ namespace _.Scripts.Data.Concrete
                 return _resources.ContainsKey(identity);
             }
 
-            public int GetResourceCount(string identity)
+            public int GetResourceQuantity(string identity)
             {
                 if (HasResource(identity))
                     return _resources[identity];
 
                 throw new Exception($"Resource {identity} is not in use!");
+            }
+
+            public void SetResourceQuantity(string identity, int quantity)
+            {
+                if (!HasResource(identity))
+                    throw new Exception($"Resource {identity} is not in use!");
+                    
+                _resources[identity] = quantity;
             }
         }
         

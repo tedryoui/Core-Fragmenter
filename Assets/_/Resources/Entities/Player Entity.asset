@@ -24,3 +24,8 @@ MonoBehaviour:
       IsUnlocked: 1
     - Identity: BPT_DRONE_2
       IsUnlocked: 0
+    DefaultResources:
+    - Identity: RES_BIT
+      Count: 0
+    - Identity: RES_SCRAP
+      Count: 0
