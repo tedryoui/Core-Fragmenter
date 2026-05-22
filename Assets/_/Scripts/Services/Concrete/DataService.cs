@@ -73,6 +73,14 @@ namespace _.Scripts.Services
             throw new Exception($"Data {identity} does not exist");
         }
 
+        public int Count<T>()
+            where T : IData
+        {
+            var count = _dataCache.Count(x => x is T);
+            
+            return count;
+        }
+
         public bool Has<T>(string identity)
         {
             if (_signedDataCache.TryGetValue(identity, out var data) && data is T)

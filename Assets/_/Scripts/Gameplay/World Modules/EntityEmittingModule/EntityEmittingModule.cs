@@ -196,7 +196,7 @@ namespace _.Scripts.Gameplay.World_Modules
             
         }
 
-        public async UniTask<IEntity> Emit(EmitInformation emitInformation, CancellationToken cancellationToken = default)
+        public async UniTask<IEntity> Emit(EmitInformation emitInformation)
         {
             var element    = _entitiesCollection.Get(emitInformation.Identity);
             var entity = (IEntity)null;

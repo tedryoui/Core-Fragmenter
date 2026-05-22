@@ -5,6 +5,8 @@ using _.Scripts.Data.Concrete;
 using _.Scripts.Events;
 using _.Scripts.Gameplay.Player;
 using _.Scripts.Gameplay.Utility;
+using _.Scripts.Gameplay.World_Modules;
+using _.Scripts.Scriptable_Objects.Concrete.Entities;
 using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using Core.Scripts.Helpers;
@@ -19,6 +21,7 @@ namespace _.Scripts.Gameplay.Entity.Concrete
 #region VContainer
 
         private PlayerProfile           _playerProfile;
+        private WorldService            _worldService;
         private DataService             _dataService;
         private ScriptableObjectService _scriptableObjectService;
 
@@ -26,6 +29,7 @@ namespace _.Scripts.Gameplay.Entity.Concrete
         private void Configure(ServiceLocator serviceLocator, IObjectResolver resolver)
         {
             _dataService             = serviceLocator.Get<DataService>();
+            _worldService            = serviceLocator.Get<WorldService>();
             _scriptableObjectService = serviceLocator.Get<ScriptableObjectService>();
             _playerProfile           = resolver.Resolve<PlayerProfile>();
         }
@@ -89,6 +93,42 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             EventBus.Instance.Subscribe<AddBlueprintEvent>(OnAddBlueprintEvent);
             EventBus.Instance.Subscribe<UnlockBlueprintEvent>(OnUnlockBlueprintEvent);
             EventBus.Instance.Subscribe<RemoveBlueprintEvent>(OnRemoveBlueprintEvent);
+            
+            EventBus.Instance.Subscribe<AddDroneEvent>(OnAddDroneEvent);
+        }
+
+        private void OnAddDroneEvent(AddDroneEvent obj)
+        {
+            var droneCount = _dataService.Count<DroneData>();
+            var identity   = $"Drone {droneCount + 1}";
+
+            var droneData = new DroneData(identity);
+
+            var setup = EntityEmittingModule.EmitInformation
+                .Create(obj.ScriptableObjectIdentity)
+                .WithPosition(float3.zero)
+                .WithRotation(quaternion.identity)
+                .WithName("Drone")
+                .WithScale(new float3(1, 1, 1))
+                .SetRegisterInWorldService(false)
+                .SetOnComplete((so) =>
+                {
+                    if (so is DroneEntityScriptableObject droneSO)
+                        droneData.Fill(droneSO.DataPreset);
+                });
+
+            var awaiter = _worldService.EntityEmittingModule.Emit(setup).GetAwaiter();
+            awaiter.OnCompleted(() =>
+            {
+                var entity = awaiter.GetResult() as DroneEntity;
+
+                if (entity == null)
+                    throw new Exception($"Entity {identity} was not instantiated!");
+                
+                _dataService.Add(droneData);
+                entity.AssignIdentity(identity);
+                _worldService.Register(identity, entity);
+            });
         }
 
         private bool DoesBlueprintExist(string identity)
@@ -158,6 +198,8 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             _input.Disable();
             _input.Dispose();
             
+            EventBus.Instance.Unsubscribe<AddDroneEvent>(OnAddDroneEvent);
+            
             EventBus.Instance.Unsubscribe<AddBlueprintEvent>(OnAddBlueprintEvent);
             EventBus.Instance.Unsubscribe<UnlockBlueprintEvent>(OnUnlockBlueprintEvent);
             EventBus.Instance.Unsubscribe<RemoveBlueprintEvent>(OnRemoveBlueprintEvent);
@@ -168,7 +210,7 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             var from = transform.position + Vector3.up + transform.forward * _stoppingOffset;
             var to   = from + transform.forward * _stoppingDistance;
             
-            Gizmos.color =Color.black;
+            Gizmos.color = Color.black;
             Gizmos.DrawLine(from, to);
         }
     }

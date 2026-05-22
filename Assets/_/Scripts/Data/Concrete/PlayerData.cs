@@ -96,7 +96,7 @@ namespace _.Scripts.Data.Concrete
                 return false;
             }
         }
-
+        
 #endregion
 
 #region Secondary Fields

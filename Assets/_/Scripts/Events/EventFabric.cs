@@ -9,7 +9,9 @@ namespace _.Scripts.Events
         {
             AddBlueprint,
             UnlockBlueprint,
-            RemoveBlueprint
+            RemoveBlueprint,
+            
+            AddDrone,
         }
 
         public static EventBus.IEvent Build(EventType eventType, object[] arguments)
@@ -22,6 +24,8 @@ namespace _.Scripts.Events
                     return Activator.CreateInstance(typeof(UnlockBlueprintEvent), args: arguments) as EventBus.IEvent;
                 case EventType.RemoveBlueprint:
                     return Activator.CreateInstance(typeof(RemoveBlueprintEvent), args: arguments) as EventBus.IEvent;
+                case EventType.AddDrone:
+                    return Activator.CreateInstance(typeof(AddDroneEvent), args: arguments) as EventBus.IEvent;
             }
             
             throw new ArgumentOutOfRangeException($"Unknown event {eventType}");
@@ -39,6 +43,9 @@ namespace _.Scripts.Events
                     break;
                 case EventType.RemoveBlueprint:
                     EventBus.Instance.Publish<RemoveBlueprintEvent>(@event as RemoveBlueprintEvent);
+                    break;
+                case EventType.AddDrone:
+                    EventBus.Instance.Publish<AddDroneEvent>(@event as AddDroneEvent);
                     break;
                 default:
                     throw new ArgumentException($"Unknown event {eventType}");

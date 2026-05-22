@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM_[Changes]/URP.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/shelf/Uncommitted_changes_before_Merge_at_5_15_2026_4_46_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints Collection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints Collection.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 1 Blueprint.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 1 Blueprint.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 2 Blueprint.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 2 Blueprint.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 3 Blueprint.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Blueprints/Drone 3 Blueprint.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/DroneFabricEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/PlayerEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/PlayerEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/World Modules/EntityEmittingModule/EntityEmittingModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Services/Concrete/DataService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +67,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Data/IData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Entry Points/GameplaySceneEntryPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/AddBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/AddDroneEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/RemoveBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_/Scripts/Events/UnlockBlueprintEvent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -237,7 +236,7 @@
       <workItem from="1779354319524" duration="12904000" />
       <workItem from="1779385233839" duration="39000" />
       <workItem from="1779391582540" duration="1600000" />
-      <workItem from="1779470120498" duration="3574000" />
+      <workItem from="1779470120498" duration="7348000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />
@@ -423,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779393115766</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added&#10;+ Automatic blueprint unlocking/locking/ adding/removing due to some event procced&#10;+ AddBlueprintEvent/RemoveBlueprintEvent/UnlockBlueprintEvent&#10;+ Drone 3 Scriptable Object&#10;+ Event Bus&#10;+ Event Fabric with annonymous event invokation">
+      <option name="closed" value="true" />
+      <created>1779473997004</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1779473997004</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +479,8 @@
     <MESSAGE value="Changed&#10;* Gameplay Scene (new Drone Fabric entity)" />
     <MESSAGE value="Added&#10;+ Drone Fabric Idle State&#10;Changed&#10;* Drone Fabric Entity&#10;* Gameplay Scene" />
     <MESSAGE value="Added&#10;+ Player Data blueprints available/unlocked state controlling&#10;Changed&#10;* Player Data Preset, now it have default player blueprints" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Player Data blueprints available/unlocked state controlling&#10;Changed&#10;* Player Data Preset, now it have default player blueprints" />
+    <MESSAGE value="Added&#10;+ Automatic blueprint unlocking/locking/ adding/removing due to some event procced&#10;+ AddBlueprintEvent/RemoveBlueprintEvent/UnlockBlueprintEvent&#10;+ Drone 3 Scriptable Object&#10;+ Event Bus&#10;+ Event Fabric with annonymous event invokation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;+ Automatic blueprint unlocking/locking/ adding/removing due to some event procced&#10;+ AddBlueprintEvent/RemoveBlueprintEvent/UnlockBlueprintEvent&#10;+ Drone 3 Scriptable Object&#10;+ Event Bus&#10;+ Event Fabric with annonymous event invokation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

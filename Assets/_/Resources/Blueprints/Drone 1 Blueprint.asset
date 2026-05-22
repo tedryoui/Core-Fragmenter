@@ -49,3 +49,11 @@ MonoBehaviour:
       _boolValue: 0
       _stringValue: 
       _objectValue: {fileID: 0}
+  - EventType: 3
+    Data:
+    - _dataType: 1
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 0
+      _stringValue: Drone
+      _objectValue: {fileID: 0}
