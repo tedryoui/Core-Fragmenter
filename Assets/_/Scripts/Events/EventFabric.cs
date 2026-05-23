@@ -1,10 +1,56 @@
 ﻿using System;
 using Core.Scripts.Helpers;
+using Sirenix.OdinInspector;
+using UnityEngine;
+using Object = System.Object;
 
 namespace _.Scripts.Events
 {
     public static class EventFabric
     {
+        [Serializable]
+        public struct Event 
+        {
+            [Serializable, InlineProperty, HideLabel]
+            public struct EventArguments
+            {
+                public enum EventDataType
+                {
+                    INT,
+                    STRING,
+                    FLOAT,
+                    BOOL,
+                    OBJECT
+                }
+                
+                [SerializeField] private EventDataType _dataType;
+                
+                [ShowIf("@this._dataType == EventDataType.INT")]
+                [SerializeField] private int    _intValue;
+                [ShowIf("@this._dataType == EventDataType.FLOAT")]
+                [SerializeField] private float  _floatValue;
+                [ShowIf("@this._dataType == EventDataType.BOOL")]
+                [SerializeField] private bool   _boolValue;
+                [ShowIf("@this._dataType == EventDataType.STRING")]
+                [SerializeField] private string _stringValue;
+                [ShowIf("@this._dataType == EventDataType.OBJECT")]
+                [SerializeField] private Object _objectValue;
+
+                public object Data => _dataType switch
+                {
+                    EventDataType.INT    => _intValue,
+                    EventDataType.STRING => _stringValue,
+                    EventDataType.FLOAT  => _floatValue,
+                    EventDataType.BOOL   => _boolValue,
+                    EventDataType.OBJECT => _objectValue,
+                    _                    => throw new ArgumentOutOfRangeException()
+                };
+            }
+            
+            public EventFabric.EventType EventType;
+            public EventArguments[]  Data;
+        }
+        
         public enum EventType
         {
             AddBlueprint,

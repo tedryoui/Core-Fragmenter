@@ -20,3 +20,13 @@ MonoBehaviour:
     HealthPoints: 20
     RebootDuration: 5
     DealDamageDelay: 3
+    DropPerDamage:
+    - ResourceIdentity: RES_BIT
+      ResourceQuantity: 1
+    - ResourceIdentity: RES_SCRAP
+      ResourceQuantity: 2
+    DropPerDeath:
+    - ResourceIdentity: RES_BIT
+      ResourceQuantity: 15
+    - ResourceIdentity: RES_SCRAP
+      ResourceQuantity: 35

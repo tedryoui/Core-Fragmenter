@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using _.Scripts.Events;
 using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -18,6 +20,9 @@ namespace _.Scripts.Data.Concrete
             _maxHealthPoints = presetData.HealthPoints;
             _rebootDuration  = presetData.RebootDuration;
             _dealDamageDelay = presetData.DealDamageDelay;
+            
+            _dropPerDamage = presetData.DropPerDamage;
+            _dropPerDeath  = presetData.DropPerDeath;
             
             return this;
         }
@@ -94,6 +99,12 @@ namespace _.Scripts.Data.Concrete
             }
         }
 
+        private List<CoreDataPreset.Drop>                _dropPerDeath;
+        public  IReadOnlyCollection<CoreDataPreset.Drop> DropPerDeath => _dropPerDeath;
+
+        private List<CoreDataPreset.Drop>                _dropPerDamage;
+        public  IReadOnlyCollection<CoreDataPreset.Drop> DropPerDamage => _dropPerDamage;
+        
 #endregion
 
         public CoreData()
@@ -124,5 +135,15 @@ namespace _.Scripts.Data.Concrete
         public float RebootDuration;
         [Unit(Units.Second)]
         public float DealDamageDelay;
+
+        [Serializable]
+        public struct Drop
+        {
+            public string ResourceIdentity;
+            public int    ResourceQuantity;
+        }
+        
+        public List<Drop> DropPerDamage;
+        public List<Drop> DropPerDeath;
     }
 }

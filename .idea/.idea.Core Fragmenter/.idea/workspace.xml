@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a7baaa7c-75f5-4b97-94fa-2cc9bc3e2127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core Fragmenter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities/Player Entity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Prefabs/Core.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Prefabs/Core.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Resources/Entities/Core Entity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Resources/Entities/Core Entity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scene/Gameplay Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/CoreData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Data/Concrete/CoreData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Events/EventFabric.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/Concrete/CoreEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreRadiationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreRadiationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreWeakState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Entity/State/Concrete/Core/CoreWeakState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/IDamageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Gameplay/Utility/IDamageable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_/Scripts/Scriptable Objects/BlueprintScriptableObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +160,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gameplay-changes&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -185,10 +192,10 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="6864">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="6444">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6864" />
+      <option name="pid" value="6444" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -232,6 +239,8 @@
       <workItem from="1779385233839" duration="39000" />
       <workItem from="1779391582540" duration="1600000" />
       <workItem from="1779470120498" duration="9347000" />
+      <workItem from="1779553749406" duration="2202000" />
+      <workItem from="1779562486451" duration="2485000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;+ ServiceLocator registration &amp; initialization&#10;+ Scriptable Object Service initialization&#10;+ Basic methods for controlling ServiceLocator &amp; Scriptable Object Service&#10;+ Entry points and VContainer lifetime scopes">
       <option name="closed" value="true" />

@@ -23,49 +23,6 @@ namespace _.Scripts.Scriptable_Objects
             public uint                           Quantity;
         }
         
-        [Serializable]
-        public struct BlueprintEvent
-        {
-            [Serializable, InlineProperty, HideLabel]
-            public struct BlueprintEventData
-            {
-                public enum BlueprintEventDataType
-                {
-                    INT,
-                    STRING,
-                    FLOAT,
-                    BOOL,
-                    OBJECT
-                }
-                
-                [SerializeField] private BlueprintEventDataType _dataType;
-                
-                [ShowIf("@this._dataType == BlueprintEventDataType.INT")]
-                [SerializeField] private int    _intValue;
-                [ShowIf("@this._dataType == BlueprintEventDataType.FLOAT")]
-                [SerializeField] private float  _floatValue;
-                [ShowIf("@this._dataType == BlueprintEventDataType.BOOL")]
-                [SerializeField] private bool   _boolValue;
-                [ShowIf("@this._dataType == BlueprintEventDataType.STRING")]
-                [SerializeField] private string _stringValue;
-                [ShowIf("@this._dataType == BlueprintEventDataType.OBJECT")]
-                [SerializeField] private Object _objectValue;
-
-                public object Data => _dataType switch
-                {
-                    BlueprintEventDataType.INT    => _intValue,
-                    BlueprintEventDataType.STRING => _stringValue,
-                    BlueprintEventDataType.FLOAT  => _floatValue,
-                    BlueprintEventDataType.BOOL   => _boolValue,
-                    BlueprintEventDataType.OBJECT => _objectValue,
-                    _                             => throw new ArgumentOutOfRangeException()
-                };
-            }
-            
-            public EventFabric.EventType EventType;
-            public BlueprintEventData[]  Data;
-        }
-        
         [SerializeField] private string _identity;
 
         [SerializeField] private string _title;
@@ -78,7 +35,7 @@ namespace _.Scripts.Scriptable_Objects
         
         [SerializeField] private List<BlueprintListing> _inputResources;
         
-        [SerializeField] private List<BlueprintEvent> _outputEvents;
+        [SerializeField] private List<EventFabric.Event> _outputEvents;
 
         public string Identity => _identity;
 
@@ -91,6 +48,6 @@ namespace _.Scripts.Scriptable_Objects
 
         public IReadOnlyCollection<BlueprintListing> InputResources => _inputResources.AsReadOnly();
 
-        public IReadOnlyCollection<BlueprintEvent> OutputEvents => _outputEvents.AsReadOnly();
+        public IReadOnlyCollection<EventFabric.Event> OutputEvents => _outputEvents.AsReadOnly();
     }
 }
