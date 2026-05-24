@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _.Scripts.Data.Concrete;
+using _.Scripts.Scriptable_Objects;
 using _.Scripts.User_Interface;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.iOS;
 using UnityEngine;
 
 namespace _.Scripts.Gameplay.Entity.Concrete.Trade_Fabric
@@ -83,7 +86,7 @@ namespace _.Scripts.Gameplay.Entity.Concrete.Trade_Fabric
 
         private void OnClearCart()
         {
-            _tempOrder.Clear();
+            _tempOrder?.Clear();
         }
 
         private void OnQuantityChanged(string identity, int quantity)
@@ -95,13 +98,60 @@ namespace _.Scripts.Gameplay.Entity.Concrete.Trade_Fabric
         {
             var window = Entity.UserInterfaceService.Get<TradingWindowViewModel>();
             window.Hide();
-            
-            var summary   = GetOrderSummary();
-            var whenCompletes = DateTime.Now + TimeSpan.FromSeconds(summary.TotalDeliveryTime);
-            
-            Entity.TradeEntityData.AddOrder(_tempOrder, whenCompletes);
-            
-            _tempOrder.Clear();
+
+            var hasResources = true;
+            var lines        = _tempOrder.Lines;
+
+            foreach (var line in lines)
+            {
+                if (!hasResources) break;
+                
+                var tradeConfig           = Entity.TradeList.FirstOrDefault(y => y.Identity.Equals(line.Identity));
+                var inputResourceIdentity = tradeConfig.InputResource.ResourceId;
+
+                if (_playerData.Resource.HasResource(inputResourceIdentity))
+                {
+                    var currentQuantity = _playerData.Resource.GetResourceQuantity(inputResourceIdentity);
+                    var neededQuantity  = tradeConfig.InputAmount * line.Quantity;
+
+                    if (currentQuantity < neededQuantity)
+                        hasResources = false;
+                }
+                else
+                    hasResources = false;
+            }
+
+            if (hasResources)
+            {
+                var summary       = GetOrderSummary();
+                var bitsPrice     = summary.TotalBaseCost;
+                var whenCompletes = DateTime.Now + TimeSpan.FromSeconds(summary.TotalDeliveryTime);
+                
+                if (_playerData.Resource.HasEnoughResource("RES_BIT", (int)bitsPrice))
+                {
+                    foreach (var line in lines)
+                    {
+                        var tradeConfig = Entity.TradeList.FirstOrDefault(y => y.Identity.Equals(line.Identity));
+                        var inputResourceIdentity = tradeConfig.InputResource.ResourceId;
+
+                        var currentQuantity = _playerData.Resource.GetResourceQuantity(inputResourceIdentity);
+                        var neededQuantity  = tradeConfig.InputAmount * line.Quantity;
+
+                        var quantity = currentQuantity - neededQuantity;
+
+                        _playerData.Resource.SetResourceQuantity(inputResourceIdentity, (int)quantity);
+                    }
+
+                    var currentBitsQuantity = _playerData.Resource.GetResourceQuantity("RES_BIT");
+                    var bitsQuantity        = currentBitsQuantity - bitsPrice;
+                    
+                    _playerData.Resource.SetResourceQuantity("RES_BIT", (int)bitsQuantity);
+                    
+                    Entity.TradeEntityData.AddOrder(_tempOrder, whenCompletes);
+                }
+            }
+
+            _tempOrder = null;
         }
 
         public override void OnUpdate()

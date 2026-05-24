@@ -29,3 +29,5 @@ MonoBehaviour:
       Count: 0
     - Identity: RES_SCRAP
       Count: 0
+    - Identity: RES_AMMO
+      Count: 0

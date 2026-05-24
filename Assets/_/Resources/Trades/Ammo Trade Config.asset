@@ -15,8 +15,8 @@ MonoBehaviour:
   _identity: TRD_10_AMMO
   _tradeName: Ammo (10x)
   _deliveryTime: 20
-  _baseCost: 100
-  _inputResource: {fileID: 11400000, guid: b1acfdcd0dd0daa4186b6e783a8e9203, type: 2}
-  _inputAmount: 5
+  _baseCost: 5
+  _inputResource: {fileID: 11400000, guid: bb613ae79aace2647bab1d632a08865a, type: 2}
+  _inputAmount: 10
   _outputResource: {fileID: 11400000, guid: b1f2b38a57bff9c4fa1272fc696b0c8e, type: 2}
   _outputAmount: 10

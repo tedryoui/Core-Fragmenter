@@ -145,6 +145,11 @@ namespace _.Scripts.Data.Concrete
                 return _resources.ContainsKey(identity);
             }
 
+            public bool HasEnoughResource(string identity, int quantity)
+            {
+                return HasResource(identity) && _resources[identity] >= quantity;
+            }
+
             public int GetResourceQuantity(string identity)
             {
                 if (HasResource(identity))

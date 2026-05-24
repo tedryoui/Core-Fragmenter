@@ -69,6 +69,30 @@ namespace _.Scripts.Gameplay.Entity.Concrete
                 if (tradeOrder.IsCompleted())
                 {
                     TradeEntityData.RemoveOrder(tradeOrder.Identity);
+
+                    var scriptableObjectService = _serviceLocator.Get<ScriptableObjectService>();
+                    var tradeCollectionScriptableObject = scriptableObjectService.Find<TradeConfigsCollectionScriptableObject>();
+                    var playerData = DataService.Get<PlayerData>(PlayerID);
+                    
+                    foreach (var line in tradeOrder.Lines)
+                    {
+                        var tradeConfigScriptableObject = tradeCollectionScriptableObject.Get(line.Identity);
+
+                        if (playerData.Resource.HasResource(tradeConfigScriptableObject.OutputResource.ResourceId))
+                        {
+                            var currentQuantity = playerData.Resource.GetResourceQuantity(tradeConfigScriptableObject.OutputResource.ResourceId);
+                            
+                            playerData.Resource.SetResourceQuantity(
+                                tradeConfigScriptableObject.OutputResource.ResourceId,
+                                currentQuantity + (int)tradeConfigScriptableObject.OutputAmount);
+                        }
+                        else
+                        {
+                            playerData.Resource.DepositeResource(
+                                tradeConfigScriptableObject.OutputResource.ResourceId, 
+                                (int)tradeConfigScriptableObject.OutputAmount);
+                        }
+                    }
                     
                     Debug.Log($"Trade Order {tradeOrder.Identity} has been completed.");
                 }
