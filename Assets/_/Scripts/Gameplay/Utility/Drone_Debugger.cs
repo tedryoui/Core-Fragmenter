@@ -19,6 +19,9 @@ namespace _.Scripts.Gameplay.Utility
         [HideInEditorMode] 
         [ShowInInspector] private float3 _agentVelocity;
 
+        [HideInEditorMode] 
+        [ShowInInspector] private int _ammoCurrentAmount;
+
         private void OnValidate()
         {
             if (_entity == null)
@@ -32,6 +35,8 @@ namespace _.Scripts.Gameplay.Utility
             _dealDamageTime = _entity.DroneData.DealDamageTime;
             
             _agentVelocity = _entity.NavMeshAgent.velocity;
+            
+            _ammoCurrentAmount = _entity.DroneData.AmmoCurrentAmount;
         }
     }
 }

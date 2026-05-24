@@ -9,7 +9,7 @@ namespace @_.Scripts.Gameplay.Entity.State.Concrete.Drone
     {
 #region Enums
 
-        public enum DroneTask { None, Deploy, SearchShootTarget }
+        public enum DroneTask { None, Deploy, SearchShootTarget, RefillAmmo }
 
 #endregion
 
@@ -76,6 +76,9 @@ namespace @_.Scripts.Gameplay.Entity.State.Concrete.Drone
                 case DroneTask.SearchShootTarget:
                     Entity.SetState("Drone Search Shoot Target");
                     break;
+                case  DroneTask.RefillAmmo:
+                    Entity.SetState("Drone Refill Ammo");
+                    break;
             }
         }
 
@@ -111,6 +114,8 @@ namespace @_.Scripts.Gameplay.Entity.State.Concrete.Drone
         {
             if (Entity.DroneData.AmmoCurrentAmount != 0)
                 return DroneTask.SearchShootTarget;
+            else if (Entity.DroneData.AmmoCurrentAmount == 0)
+                return DroneTask.RefillAmmo;
             else 
                 return DroneTask.None;
         }

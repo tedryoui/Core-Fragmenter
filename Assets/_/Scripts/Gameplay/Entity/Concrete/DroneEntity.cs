@@ -47,6 +47,9 @@ namespace _.Scripts.Gameplay.Entity.Concrete
         private DroneData _droneData;
         public DroneData DroneData => _droneData ??= DataService.Get<DroneData>(Identity);
 
+        private PlayerData _playerData;
+        public  PlayerData PlayerData => _playerData ??= DataService.Get<PlayerData>(_playerProfile.ID);
+        
 #endregion
 
         public override List<AbstractState> PossibleStates => new()
@@ -55,7 +58,8 @@ namespace _.Scripts.Gameplay.Entity.Concrete
             new DroneDeployState(this),
             new DroneSearchShootTargetState(this),
             new DroneFollowShootTargetState(this),
-            new DroneShootTargetState(this)
+            new DroneShootTargetState(this),
+            new DroneRefillAmmoState(this),
         };
 
         public override void Start()
