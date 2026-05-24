@@ -114,7 +114,10 @@ namespace _.Scripts.Gameplay.Entity.Concrete
                 .SetOnComplete((so) =>
                 {
                     if (so is DroneEntityScriptableObject droneSO)
+                    {
                         droneData.Fill(droneSO.DataPreset);
+                        droneData.AmmoCurrentAmount = droneData.AmmoMaximumAmount;
+                    }
                 });
 
             var awaiter = _worldService.EntityEmittingModule.Emit(setup).GetAwaiter();

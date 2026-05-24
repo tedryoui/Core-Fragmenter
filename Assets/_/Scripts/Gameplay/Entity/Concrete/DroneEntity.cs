@@ -2,6 +2,7 @@
 using System.Threading;
 using _.Scripts.Data.Concrete;
 using _.Scripts.Gameplay.Entity.State.Concrete.Drone;
+using _.Scripts.Gameplay.Player;
 using _.Scripts.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace _.Scripts.Gameplay.Entity.Concrete
 #region VContainer
 
         [Inject] private ServiceLocator _serviceLocator;
+        [Inject] private PlayerProfile  _playerProfile;
 
 #endregion
 

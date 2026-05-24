@@ -22,3 +22,4 @@ MonoBehaviour:
     DealDamageDelay: 3
     AgentNonChangePositionDelta: 0.5
     AgentNonChangePositionDuration: 4
+    AmmoAmount: 5

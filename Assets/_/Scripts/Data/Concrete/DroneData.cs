@@ -18,6 +18,7 @@ namespace _.Scripts.Data.Concrete
             _dealDamageDelay           = presetData.DealDamageDelay;
             _nonChangePositionDelta    = presetData.AgentNonChangePositionDelta;
             _nonChangePositionDuration = presetData.AgentNonChangePositionDuration;
+            _ammoMaximumAmount         = presetData.AmmoAmount;
 
             return this;
         }
@@ -93,6 +94,24 @@ namespace _.Scripts.Data.Concrete
         private float _nonChangePositionDuration;
         public float NonChangePositionDuration => _nonChangePositionDuration;
 
+        private int _ammoMaximumAmount;
+        public int AmmoMaximumAmount => _ammoMaximumAmount;
+        
+        private int _ammoCurrentAmount;
+        public  int AmmoCurrentAmount
+        {
+            get => _ammoCurrentAmount;
+            set
+            {
+                _ammoCurrentAmount = value switch
+                {
+                    var nextValue when nextValue < 0                 => 0,
+                    var nextValue when nextValue > AmmoMaximumAmount => AmmoMaximumAmount,
+                    _                                                => value
+                };
+            }
+        }
+
 #endregion
 
         public DroneData(string identity)
@@ -106,6 +125,8 @@ namespace _.Scripts.Data.Concrete
 
             _currentSpeed        = 0.0f;
             _currentAngularSpeed = 0.0f;
+
+            _ammoCurrentAmount = 0;
 
             _dealDamageTime = 0.0f;
         }
@@ -124,5 +145,7 @@ namespace _.Scripts.Data.Concrete
         public float AgentNonChangePositionDelta;
         [Unit(Units.Second)]
         public float AgentNonChangePositionDuration;
+
+        public int AmmoAmount;
     }
 }

@@ -109,7 +109,10 @@ namespace @_.Scripts.Gameplay.Entity.State.Concrete.Drone
 
         private DroneTask FindTask()
         {
-            return DroneTask.SearchShootTarget;
+            if (Entity.DroneData.AmmoCurrentAmount != 0)
+                return DroneTask.SearchShootTarget;
+            else 
+                return DroneTask.None;
         }
 
         public override void OnExit()

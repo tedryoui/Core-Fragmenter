@@ -82,8 +82,12 @@ namespace _.Scripts.Gameplay.Entity.State.Concrete.Drone
             
             if (Entity.DroneData.DealDamageTime >= Entity.DroneData.DealDamageDelay)
             {
+                Entity.DroneData.AmmoCurrentAmount -= 1;
                 _damageable.ReceiveDamage(1);
                 Entity.DroneData.DealDamageTime = 0.0f;
+                
+                if (Entity.DroneData.AmmoCurrentAmount == 0)
+                    Entity.SetState("Drone Idle");
             }
             else 
                 Entity.DroneData.DealDamageTime += Time.deltaTime;
