@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _.Scripts.Gameplay.Entity;
 using _.Scripts.Gameplay.World_Modules;
+using _.Scripts.Gameplay.World_Modules.Camera_Managing_Module;
 using _.Scripts.Scriptable_Objects.Global;
 using UnityEngine;
 using VContainer;
@@ -15,23 +16,27 @@ namespace _.Scripts.Services
         [Inject] private ProjectSettingsScriptableObject _projectSettings;
 
         private EntityEmittingModule _emittingModule;
+        private VirtualCameraModule  _vCameraModule;
         
         private Dictionary<string, IEntity> _entities;
         
         public IReadOnlyDictionary<string, IEntity> Entities => _entities;
         
         public EntityEmittingModule EntityEmittingModule => _emittingModule;
+        public VirtualCameraModule  VirtualCameraModule  => _vCameraModule;
 
         public WorldService()
         {
             _entities = new Dictionary<string, IEntity>();
             
             _emittingModule = new EntityEmittingModule();
+            _vCameraModule  = new VirtualCameraModule();
         }
         
         public void Initialize()
         {
             _objectResolver.Inject(_emittingModule);
+            _objectResolver.Inject(_vCameraModule);
             
             Debug.Log($"<color=green>{nameof(WorldService)} initialized!</color>");
         }

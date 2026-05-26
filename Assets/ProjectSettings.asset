@@ -20,3 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95efcf8e1283e5b4c80530df02fa55ef, type: 2}
   - {fileID: 11400000, guid: a457be69c3143014dbc6c5f6a709fc79, type: 2}
   - {fileID: 11400000, guid: 5b49898e0701fcd45b1139862a6211eb, type: 2}
+  _cameraRegisters:
+  - Definition: 2
+    Camera: {fileID: 4071024447146187485, guid: d72cadacf8c9a4a4f8c02e87a71f267c, type: 3}

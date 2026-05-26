@@ -66,7 +66,15 @@ namespace _.Scripts.Entry_Points
                     if (so is PlayerEntityScriptableObject playerEntityScriptableObject)
                         playerData.Fill(playerEntityScriptableObject.DataPreset);
                 });
-            worldService.EntityEmittingModule.Emit(emitInformation);
+            var awaiter = worldService.EntityEmittingModule.Emit(emitInformation).GetAwaiter();
+            
+            awaiter.OnCompleted(() =>
+            {
+                var player = awaiter.GetResult() as PlayerEntity;
+                var playerVCam = player.VCam;
+                
+                worldService.VirtualCameraModule.RegisterPlayerCamera(playerVCam);
+            });
         }
 
         private void RegisterCoreAndItsData()

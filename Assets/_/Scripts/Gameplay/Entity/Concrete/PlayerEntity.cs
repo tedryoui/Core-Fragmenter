@@ -6,10 +6,12 @@ using _.Scripts.Events;
 using _.Scripts.Gameplay.Player;
 using _.Scripts.Gameplay.Utility;
 using _.Scripts.Gameplay.World_Modules;
+using _.Scripts.Gameplay.World_Modules.Camera_Managing_Module;
 using _.Scripts.Scriptable_Objects.Concrete.Entities;
 using _.Scripts.Scriptable_Objects.Global;
 using _.Scripts.Services;
 using Core.Scripts.Helpers;
+using Unity.Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using VContainer;
@@ -50,13 +52,15 @@ namespace _.Scripts.Gameplay.Entity.Concrete
 
 #region Scene Reference
 
-        [SerializeField] private Animator         _animator;
-        [SerializeField] private OnAnimatorEvents _onAnimatorEvents;
-        [SerializeField] private Rigidbody        _rigidbody;
-        
-        public Animator         Animator         => _animator;
-        public OnAnimatorEvents OnAnimatorEvents => _onAnimatorEvents;
-        public Rigidbody        Rigidbody        => _rigidbody;
+        [SerializeField] private CinemachineCamera _vCam;
+        [SerializeField] private Animator          _animator;
+        [SerializeField] private OnAnimatorEvents  _onAnimatorEvents;
+        [SerializeField] private Rigidbody         _rigidbody;
+
+        public CinemachineCamera VCam             => _vCam;
+        public Animator          Animator         => _animator;
+        public OnAnimatorEvents  OnAnimatorEvents => _onAnimatorEvents;
+        public Rigidbody         Rigidbody        => _rigidbody;
 
 #endregion
 

@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _.Scripts.Gameplay.World_Modules.Camera_Managing_Module;
 using Sirenix.OdinInspector;
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -44,7 +47,17 @@ namespace _.Scripts.Scriptable_Objects.Global
         public int    GameplaySceneBuildIndex => _gameplaySceneBuildIndex;
         
         public IReadOnlyList<ScriptableObject> ScriptableObjectsToCache => _scriptableObjectsToCache;
-
+        
+        [Serializable]
+        public struct CameraRegister
+        {
+            public VirtualCameraModule.VirtualCameraDefinition Definition;
+            public CinemachineCamera                           Camera;
+        }
+        
+        [SerializeField] private List<CameraRegister> _cameraRegisters;
+        public IReadOnlyCollection<CameraRegister> CameraRegisters => _cameraRegisters;
+        
 #if UNITY_EDITOR
         public static IEnumerable FriendlySceneBuildIndexList()
         {
